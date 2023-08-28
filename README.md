@@ -1,2 +1,3 @@
-# sistema-de-biblioteca
-Sistema de biblioteca, como quesito avaliativo da disciplina de MI algoritmos II, da Universidade Estadual de Feira de Santana (UEFS).
+# Sistema de biblioteca
+Sistema de biblioteca, como quesito avaliativo da disciplina de MI algoritmos II, da Universidade Estadual de Feira de Santana (UEFS). 
+README em contrução...
