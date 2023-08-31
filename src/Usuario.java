@@ -6,6 +6,8 @@ public class Usuario {
     private int qtdEmprestimos;
     private int numRenovacoes;
 
+
+
     public void reservarLivros(){
         //
     }
@@ -13,6 +15,15 @@ public class Usuario {
     public void renovarEmprestimos(){
         //
     }
+
+    public Usuario(String endereco, String telefone, boolean bloqueio, int qtdEmprestimos, int numRenovacoes) {
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.bloqueio = bloqueio;
+        this.qtdEmprestimos = qtdEmprestimos;
+        this.numRenovacoes = numRenovacoes;
+    }
+
 
     public String getEndereco() {
         return endereco;
