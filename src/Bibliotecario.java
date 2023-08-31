@@ -1,10 +1,10 @@
 public class Bibliotecario extends Pessoa {
 
-    public void registrarlivros(){
+    public void registroLivro(){
         ////
     }
 
-    public void registroEmprestimos(){
+    public void registroEmprestimo(){
 
         ////
     }
