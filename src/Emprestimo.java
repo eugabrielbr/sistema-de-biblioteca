@@ -2,28 +2,31 @@ import java.time.LocalDate;
 
 public class Emprestimo {
 
-    private int IDusuario;
+    private Usuario usuario;
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucao;
-    private String tituloLivroEmprestado;
-    private int ISBN;
-    private String autor;
-    private String editora;
+    private Livro livro;
+    private int IDemprestimo;
 
-    public void verStatusUsuarioLivro(){
-        //
+    public void atualizarStatusLivro(Livro livro) {
+
+        livro.setDisponibilidade(false);
     }
 
-    public void atualizarStatusLivro(){
-        //
+    public Emprestimo(Usuario usuario, LocalDate dataEmprestimo, LocalDate dataDevolucao, Livro livro) {
+        this.usuario = usuario;
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucao = dataDevolucao;
+        this.livro = livro;
     }
 
-    public int getIDusuario() {
-        return IDusuario;
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setIDusuario(int IDusuario) {
-        this.IDusuario = IDusuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public LocalDate getDataEmprestimo() {
@@ -42,35 +45,12 @@ public class Emprestimo {
         this.dataDevolucao = dataDevolucao;
     }
 
-    public String getTituloLivroEmprestado() {
-        return tituloLivroEmprestado;
+    public Livro getLivro() {
+        return livro;
     }
 
-    public void setTituloLivroEmprestado(String tituloLivroEmprestado) {
-        this.tituloLivroEmprestado = tituloLivroEmprestado;
-    }
-
-    public int getISBN() {
-        return ISBN;
-    }
-
-    public void setISBN(int ISBN) {
-        this.ISBN = ISBN;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public String getEditora() {
-        return editora;
-    }
-
-    public void setEditora(String editora) {
-        this.editora = editora;
+    public void setLivro(Livro livro) {
+        this.livro = livro;
     }
 }
+
