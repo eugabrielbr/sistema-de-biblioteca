@@ -6,12 +6,12 @@ public class Livro {
     private String autor;
     private String editora;
     private int ISBN;
-    private int categoria;
+    private String categoria;
     private boolean disponibilidade;
     private String localizacao;
     private int ID;
 
-    public Livro(String titulo, String autor, String editora, int ISBN, int categoria, boolean disponibilidade, String localizacao) {
+    public Livro(String titulo, String autor, String editora, int ISBN, String categoria, boolean disponibilidade, String localizacao) {
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
@@ -53,11 +53,11 @@ public class Livro {
         this.ISBN = ISBN;
     }
 
-    public int getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(int categoria) {
+    public void setCategoria(String  categoria) {
         this.categoria = categoria;
     }
 
