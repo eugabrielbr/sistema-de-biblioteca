@@ -1,5 +1,8 @@
 package model;
+import DAO.AcervoDAOmap;
 
+import java.util.LinkedList;
+import java.util.List;
 public class Pessoa {
     
     private String name;
@@ -21,7 +24,13 @@ public class Pessoa {
         this.ID = ID;
     }
 
-    public void pesquisarLivros(){
-        //
+    public List<Livro> pesquisarLivros(String titulo, String autor, Integer ISBN, String categ){
+
+        AcervoDAOmap obj = new AcervoDAOmap();
+        return obj.findByGeneral(obj.acervo, titulo, autor, ISBN,categ);
     }
+
+
+
+
 }
