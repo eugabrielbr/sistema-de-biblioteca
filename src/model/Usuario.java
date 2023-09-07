@@ -10,7 +10,7 @@ public class Usuario extends Pessoa {
 
 
 
-    public void reservarLivros(){
+    public void reservarLivros(Integer id){
         //
     }
 
@@ -18,14 +18,14 @@ public class Usuario extends Pessoa {
         //
     }
 
-    public Usuario(String endereco, String telefone, boolean bloqueio, int qtdEmprestimos, int numRenovacoes) {
+    public Usuario(String name, int ID, String endereco, String telefone, boolean bloqueio, int qtdEmprestimos, int numRenovacoes) {
+        super(name, ID);
         this.endereco = endereco;
         this.telefone = telefone;
         this.bloqueio = bloqueio;
         this.qtdEmprestimos = qtdEmprestimos;
         this.numRenovacoes = numRenovacoes;
     }
-
 
     public String getEndereco() {
         return endereco;
