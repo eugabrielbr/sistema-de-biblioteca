@@ -1,6 +1,7 @@
 package DAO;
 
 import java.util.Map;
+import java.util.List;
 public interface CRUD<T> {
 
     public void create(T obj);
@@ -11,12 +12,12 @@ public interface CRUD<T> {
      * @param obj
      * @return
      */
-    public void delete(T obj);
+    public boolean delete(int ID);
 
     /**
      * Detela todos os dados
      */
-    public void deleteMany();
+    public void deleteMany(List<Integer> lista);
 
     /**
      * Atualiza um objeto
