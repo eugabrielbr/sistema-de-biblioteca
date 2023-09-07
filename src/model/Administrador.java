@@ -10,24 +10,10 @@ public class Administrador extends Pessoa{
         super(name, ID);
     }
 
-    public void cadastroNovoUsuario(){
-        ///
-    }
-
     public void gerarRelatorio(){
         //
     }
 
-    public void controleAcervo(){
-        //
-    }
 
-    public void controleDeOperadoresSistema(){
-        //
-    }
-
-    public void bloquearDesbloquearUsuario(){
-        //
-    }
 
 }
