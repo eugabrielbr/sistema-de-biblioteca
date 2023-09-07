@@ -5,13 +5,13 @@ public class Livro {
     private String titulo;
     private String autor;
     private String editora;
-    private int ISBN;
+    private Integer ISBN;
     private String categoria;
     private boolean disponibilidade;
     private String localizacao;
     private int ID;
 
-    public Livro(String titulo, String autor, String editora, int ISBN, String categoria, boolean disponibilidade, String localizacao) {
+    public Livro(String titulo, String autor, String editora, Integer ISBN, String categoria, boolean disponibilidade, String localizacao) {
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
@@ -45,12 +45,24 @@ public class Livro {
         this.editora = editora;
     }
 
-    public int getISBN() {
+    public Integer getISBN() {
         return ISBN;
     }
 
     public void setISBN(int ISBN) {
         this.ISBN = ISBN;
+    }
+
+    public boolean isDisponibilidade() {
+        return disponibilidade;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getCategoria() {
@@ -75,5 +87,19 @@ public class Livro {
 
     public void setLocalizacao(String localizacao) {
         this.localizacao = localizacao;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro{" +
+                "titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", editora='" + editora + '\'' +
+                ", ISBN=" + ISBN +
+                ", categoria='" + categoria + '\'' +
+                ", disponibilidade=" + disponibilidade +
+                ", localizacao='" + localizacao + '\'' +
+                ", ID=" + ID +
+                '}';
     }
 }
