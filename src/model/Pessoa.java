@@ -1,7 +1,5 @@
 package model;
-import DAO.acervo.AcervoDAOmap;
 
-import java.util.List;
 public class Pessoa {
     
     private String name;
@@ -28,11 +26,6 @@ public class Pessoa {
         this.ID = ID;
     }
 
-    public List<Livro> pesquisarLivros(Pesquisa pesquisa){
-
-        AcervoDAOmap obj = new AcervoDAOmap();
-        return obj.findByGeneral(pesquisa);
-    }
 
 
 
