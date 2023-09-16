@@ -1,12 +1,14 @@
 package test.DAO;
 
-import DAO.livro.LivroDAOmap;
-import model.Livro;
+import main.dao.livro.LivroDAOmap;
+import main.exceptions.livro.LivroExceptions;
+import main.model.Livro;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.Map;
 
 class LivroDAOmapTest {
 
@@ -19,7 +21,7 @@ class LivroDAOmapTest {
 
     }
     @Test
-    void findByAutor() {
+    void findByAutor() throws LivroExceptions {
 
         addLivro();
 
@@ -32,7 +34,7 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void findByTitulo() {
+    void findByTitulo() throws LivroExceptions {
 
         addLivro();
 
@@ -45,7 +47,7 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void findByCategoria() {
+    void findByCategoria() throws LivroExceptions {
 
         addLivro();
 
@@ -57,7 +59,7 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void findByISBN() {
+    void findByISBN() throws LivroExceptions {
 
         addLivro();
 
@@ -69,14 +71,14 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void findById() {
+    void findById() throws LivroExceptions  {
 
         addLivro();
         Assertions.assertNotNull(obj.findById(1));
     }
 
     @Test
-    void create() {
+    void create() throws LivroExceptions {
 
         addLivro();
         Assertions.assertNotNull(obj.findById(1));
@@ -84,34 +86,54 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void delete() {
+    void delete(){
 
         addLivro();
-        Assertions.assertTrue(obj.delete(1));
 
-    }
-
-    @Test
-    void deleteMany() {
-
-        List <Integer> lista = new ArrayList<>();
-
-        for (int i = 1; i <= 3; i++){
-            addLivro();
-            lista.add(i);
+        try{
+            obj.delete(1);
+        }
+        catch (LivroExceptions e){
+            Assertions.fail();
         }
 
-        obj.deleteMany(lista);
-
-        Assertions.assertTrue(obj.acervo.isEmpty());
     }
 
     @Test
-    void update() {
+    void deleteMany() throws LivroExceptions {
+
+        addLivro();
+        obj.deleteMany();
+        Assertions.assertTrue(obj.acervo.isEmpty());
+
+    }
+
+    @Test
+    void update() throws LivroExceptions {
+
+        addLivro();
+
+        Livro objLivro = new Livro("teoria da relativ","albert einstein",null,2222,"fisica",true,null);
+
+        try{
+            obj.update(objLivro,1);
+        }
+        catch (LivroExceptions e){
+            Assertions.fail();
+        }
+
     }
 
     @Test
     void findMany() {
+
+
+        Map<Integer,Livro> map = obj.findMany();
+        Assertions.assertNotNull(map);
+
+
+
+
     }
 
 }
