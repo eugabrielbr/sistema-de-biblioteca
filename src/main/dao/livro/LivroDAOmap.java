@@ -8,8 +8,14 @@ import java.util.Map.Entry;
 
 public class LivroDAOmap implements LivroDAO {
 
-    private Integer ID = 0;
-    public Map<Integer,Livro> acervo = new HashMap<>();
+    private Integer ID;
+    public Map<Integer,Livro> acervo;
+
+    public LivroDAOmap(){
+
+        this.ID = 0;
+        this.acervo = new HashMap<>();
+    }
 
     public List<Livro> findByAutor(String autor) throws LivroExceptions{
 

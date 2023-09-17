@@ -9,9 +9,15 @@ import java.util.*;
 
 public class UsuarioDAOmap implements UsuarioDAO{
 
-    int ID = 0;
-    public Map<Integer, Usuario> usuario_map = new HashMap<>();
+    int ID;
+    public Map<Integer, Usuario> usuario_map;
     
+    public UsuarioDAOmap(){
+
+        this.ID = 0;
+        this.usuario_map = new HashMap<>();
+    }
+
     @Override
     public void create( Usuario usuario ){
 
