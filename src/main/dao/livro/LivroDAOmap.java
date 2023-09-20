@@ -1,6 +1,6 @@
 package main.dao.livro;
 
-import main.exceptions.livro.LivroExceptions;
+import main.exceptions.crud.CrudExceptions;
 import main.model.Livro;
 
 import java.util.*;
@@ -17,7 +17,7 @@ public class LivroDAOmap implements LivroDAO {
         this.acervo = new HashMap<>();
     }
 
-    public List<Livro> findByAutor(String autor) throws LivroExceptions{
+    public List<Livro> findByAutor(String autor) throws CrudExceptions {
 
 
         List <Livro> lista = new ArrayList<>();
@@ -30,7 +30,7 @@ public class LivroDAOmap implements LivroDAO {
         }
 
         if (lista.isEmpty()){
-            throw new LivroExceptions(LivroExceptions.NOT_FOUND,null);
+            throw new CrudExceptions(CrudExceptions.NOT_FOUND,null);
         }
         else{
             return lista;
@@ -38,7 +38,7 @@ public class LivroDAOmap implements LivroDAO {
 
     }
 
-    public List<Livro> findByTitulo(String titulo) throws LivroExceptions{
+    public List<Livro> findByTitulo(String titulo) throws CrudExceptions {
 
         List <Livro> lista = new ArrayList<>();
 
@@ -50,14 +50,14 @@ public class LivroDAOmap implements LivroDAO {
         }
 
         if (lista.isEmpty()){
-            throw new LivroExceptions(LivroExceptions.NOT_FOUND,null);
+            throw new CrudExceptions(CrudExceptions.NOT_FOUND,null);
         }
         else{
             return lista;
         }
     }
 
-    public List<Livro> findByCategoria(String categoria) throws LivroExceptions {
+    public List<Livro> findByCategoria(String categoria) throws CrudExceptions {
 
         List <Livro> lista = new ArrayList<>();
 
@@ -69,14 +69,14 @@ public class LivroDAOmap implements LivroDAO {
         }
 
         if (lista.isEmpty()){
-            throw new LivroExceptions(LivroExceptions.NOT_FOUND,null);
+            throw new CrudExceptions(CrudExceptions.NOT_FOUND,null);
         }
         else{
             return lista;
         }
     }
 
-    public List<Livro> findByISBN(Integer ISBN) throws LivroExceptions {
+    public List<Livro> findByISBN(Integer ISBN) throws CrudExceptions {
 
         List <Livro> lista = new ArrayList<>();
 
@@ -88,7 +88,7 @@ public class LivroDAOmap implements LivroDAO {
         }
 
         if (lista.isEmpty()){
-            throw new LivroExceptions(LivroExceptions.NOT_FOUND,null);
+            throw new CrudExceptions(CrudExceptions.NOT_FOUND,null);
         }
         else{
             return lista;
@@ -106,19 +106,19 @@ public class LivroDAOmap implements LivroDAO {
     }
 
     @Override
-    public void delete(int ID) throws LivroExceptions {
+    public void delete(int ID) throws CrudExceptions {
 
         Livro livro = acervo.remove(ID);
 
         if (livro == null){
-            throw new LivroExceptions(LivroExceptions.DELETE,ID);
+            throw new CrudExceptions(CrudExceptions.DELETE,ID);
         }
 
 
     }
 
     @Override
-    public void deleteMany() throws LivroExceptions {
+    public void deleteMany() throws CrudExceptions {
 
         this.acervo = new HashMap<>();
         this.ID = 0;
@@ -126,7 +126,7 @@ public class LivroDAOmap implements LivroDAO {
     }
 
     @Override
-    public void update(Livro livro, Integer ID) throws LivroExceptions {
+    public void update(Livro livro, Integer ID) throws CrudExceptions {
 
         Livro get = acervo.get(ID);
 
@@ -137,7 +137,7 @@ public class LivroDAOmap implements LivroDAO {
 
         }
         else{
-            throw new LivroExceptions(LivroExceptions.UPDATE,ID);
+            throw new CrudExceptions(CrudExceptions.UPDATE,ID);
         }
 
 
@@ -151,14 +151,14 @@ public class LivroDAOmap implements LivroDAO {
     }
 
     @Override
-    public Livro findById(int id) throws LivroExceptions{
+    public Livro findById(int id) throws CrudExceptions {
         Livro busca = acervo.get(id);
 
         if (busca != null){
             return busca;
         }
         else{
-            throw new LivroExceptions(LivroExceptions.NOT_FOUND,id);
+            throw new CrudExceptions(CrudExceptions.NOT_FOUND,id);
         }
 
     }

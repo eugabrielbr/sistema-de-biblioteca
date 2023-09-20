@@ -43,7 +43,7 @@ public class DAO {
         return administradorDAO;
     }
 
-    public EmprestimoDAO getEmprestimoDAO() {
+    public static EmprestimoDAO getEmprestimoDAO() {
 
         if (emprestimoDAO == null) {
             emprestimoDAO = new EmprestimoDAOmap();

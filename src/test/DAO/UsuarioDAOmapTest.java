@@ -3,7 +3,7 @@ package test.DAO;
 
 import main.dao.usuario.UsuarioDAOmap;
 
-import main.exceptions.usuario.UsuarioExceptions;
+import main.exceptions.crud.CrudExceptions;
 import main.model.Usuario;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ class UsuarioDAOmapTest {
 
     }
     @Test
-    void create() throws UsuarioExceptions {
+    void create() throws CrudExceptions {
 
         addUsuario();
         Assertions.assertNotNull(obj.findById(1));
@@ -35,7 +35,7 @@ class UsuarioDAOmapTest {
         try{
             obj.delete(1);
         }
-        catch (UsuarioExceptions e){
+        catch (CrudExceptions e){
             Assertions.fail();
         }
 
@@ -46,7 +46,7 @@ class UsuarioDAOmapTest {
 
         addUsuario();
         obj.deleteMany();
-        Assertions.assertTrue(obj.usuario_map.isEmpty());
+        Assertions.assertTrue(obj.usuarioMap.isEmpty());
     }
 
 
@@ -60,7 +60,7 @@ class UsuarioDAOmapTest {
         try{
             obj.update(objUsuario,1);
         }
-        catch (UsuarioExceptions e){
+        catch (CrudExceptions e){
             Assertions.fail();
         }
     }
@@ -74,7 +74,7 @@ class UsuarioDAOmapTest {
     }
 
     @Test
-    void findById() throws UsuarioExceptions {
+    void findById() throws CrudExceptions {
 
         addUsuario();
         Assertions.assertNotNull(obj.findById(1));

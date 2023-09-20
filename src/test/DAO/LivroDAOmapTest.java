@@ -1,7 +1,7 @@
 package test.DAO;
 
 import main.dao.livro.LivroDAOmap;
-import main.exceptions.livro.LivroExceptions;
+import main.exceptions.crud.CrudExceptions;
 import main.model.Livro;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,13 +15,13 @@ class LivroDAOmapTest {
     LivroDAOmap obj = new LivroDAOmap();
     public void addLivro(){
 
-        Livro objLivro = new Livro("teoria da relatividade","albert einstein",null,2222,"fisica",true,null);
+        Livro objLivro = new Livro("teoria da relatividade","albert einstein",null,2222,"fisica",null);
         obj.create(objLivro);
 
 
     }
     @Test
-    void findByAutor() throws LivroExceptions {
+    void findByAutor() throws CrudExceptions {
 
         addLivro();
 
@@ -34,7 +34,7 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void findByTitulo() throws LivroExceptions {
+    void findByTitulo() throws CrudExceptions {
 
         addLivro();
 
@@ -47,7 +47,7 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void findByCategoria() throws LivroExceptions {
+    void findByCategoria() throws CrudExceptions {
 
         addLivro();
 
@@ -59,7 +59,7 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void findByISBN() throws LivroExceptions {
+    void findByISBN() throws CrudExceptions {
 
         addLivro();
 
@@ -71,14 +71,14 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void findById() throws LivroExceptions  {
+    void findById() throws CrudExceptions {
 
         addLivro();
         Assertions.assertNotNull(obj.findById(1));
     }
 
     @Test
-    void create() throws LivroExceptions {
+    void create() throws CrudExceptions {
 
         addLivro();
         Assertions.assertNotNull(obj.findById(1));
@@ -93,14 +93,14 @@ class LivroDAOmapTest {
         try{
             obj.delete(1);
         }
-        catch (LivroExceptions e){
+        catch (CrudExceptions e){
             Assertions.fail();
         }
 
     }
 
     @Test
-    void deleteMany() throws LivroExceptions {
+    void deleteMany() throws CrudExceptions {
 
         addLivro();
         obj.deleteMany();
@@ -109,16 +109,16 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void update() throws LivroExceptions {
+    void update() throws CrudExceptions {
 
         addLivro();
 
-        Livro objLivro = new Livro("teoria da relativ","albert einstein",null,2222,"fisica",true,null);
+        Livro objLivro = new Livro("teoria da relativida","albert einstein",null,2222,"fisica",null);
 
         try{
             obj.update(objLivro,1);
         }
-        catch (LivroExceptions e){
+        catch (CrudExceptions e){
             Assertions.fail();
         }
 

@@ -1,19 +1,32 @@
 package main.model;
 
-public class Administrador extends Pessoa{
+
+public class Administrador extends Pessoa {
 
 
-    private int cargo;
-    private String Senha;
+    private String cargo;
+    private String senha;
 
-    public Administrador(String name) {
+
+    public Administrador( String name, String cargo,String senha) {
         super(name);
+        this.cargo = cargo;
+        this.senha = senha;
     }
 
-    public void gerarRelatorio(){
-        //
+    public String getCargo() {
+        return cargo;
     }
 
+    public void setCargo( String cargo ) {
+        this.cargo = cargo;
+    }
 
+    public String getSenha() {
+        return senha;
+    }
 
+    public void setSenha( String senha ) {
+        this.senha = senha;
+    }
 }
