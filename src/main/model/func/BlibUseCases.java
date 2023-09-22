@@ -73,7 +73,7 @@ public class BlibUseCases {
 
         List<Emprestimo> lista = daoEmprestimo.findByUser(IDusuario);
         List<LocalDate> listAux = new ArrayList<>();
-        LocalDate dataRecente = listAux.get(0);
+
 
         long diasAtrasado = 0;
 
@@ -89,17 +89,23 @@ public class BlibUseCases {
 
         }
 
-        for (LocalDate y : listAux){ //pegando a data mais recente de devolucao
+        if (!listAux.isEmpty()) {
 
-            if (y.isAfter(dataRecente)){
+            LocalDate dataRecente = listAux.get(0);
 
-                dataRecente = y;
+            for (LocalDate y : listAux) { //pegando a data mais recente de devolucao
+
+                if (y.isAfter(dataRecente)) {
+
+                    dataRecente = y;
+                }
             }
-        }
 
-        Usuario temp = daoUsuario.findById(IDusuario); //atualizando no user do usuario
-        temp.setDataDaMulta(dataRecente.plusDays(diasAtrasado));
-        daoUsuario.update(temp,temp.getID());
+            Usuario temp = daoUsuario.findById(IDusuario); //atualizando no user do usuario
+            temp.setDataDaMulta(dataRecente.plusDays(diasAtrasado));
+            daoUsuario.update(temp, temp.getID());
+
+        }
 
 
 
