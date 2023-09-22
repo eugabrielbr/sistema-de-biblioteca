@@ -1,5 +1,9 @@
 package main.model;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario extends Pessoa {
 
     private String endereco;
@@ -8,7 +12,10 @@ public class Usuario extends Pessoa {
     private int qtdEmprestimos;
     private int numRenovacoes;
 
+    private LocalDate dataDaMulta;
 
+    List<Emprestimo> historico = new ArrayList<>();
+    List<Emprestimo> livrosDevolvidos = new ArrayList<>();
 
     public void reservarLivros(Integer id){
         //
@@ -18,11 +25,29 @@ public class Usuario extends Pessoa {
         //
     }
 
+    public void registroHistoricoUser(Emprestimo emprestimo){
+
+        historico.add(emprestimo);
+    }
+
+    public void registrosLivrosDevolvidos( Emprestimo emprestimo){
+
+        livrosDevolvidos.add(emprestimo);
+    }
+
     public Usuario(String name, String endereco, String telefone) {
         super(name);
         this.endereco = endereco;
         this.telefone = telefone;
 
+    }
+
+    public LocalDate getDataDaMulta() {
+        return dataDaMulta;
+    }
+
+    public void setDataDaMulta( LocalDate dataDaMulta ) {
+        this.dataDaMulta = dataDaMulta;
     }
 
     public String getEndereco() {
@@ -41,7 +66,7 @@ public class Usuario extends Pessoa {
         this.telefone = telefone;
     }
 
-    public boolean isBloqueio() {
+    public boolean getBloqueio() {
         return bloqueio;
     }
 
@@ -65,6 +90,10 @@ public class Usuario extends Pessoa {
         this.numRenovacoes = numRenovacoes;
     }
 
+    public List<Emprestimo> getHistorico() {
+        return historico;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -75,5 +104,13 @@ public class Usuario extends Pessoa {
                 ", qtdEmprestimos=" + qtdEmprestimos +
                 ", numRenovacoes=" + numRenovacoes +
                 '}';
+    }
+
+    public List<Emprestimo> getLivrosDevolvidos() {
+        return livrosDevolvidos;
+    }
+
+    public void setLivrosDevolvidos( List<Emprestimo> livrosDevolvidos ) {
+        this.livrosDevolvidos = livrosDevolvidos;
     }
 }
