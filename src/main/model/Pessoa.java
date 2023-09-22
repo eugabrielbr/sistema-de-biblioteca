@@ -3,7 +3,7 @@ package main.model;
 public class Pessoa {
     
     private String name;
-    private int ID;
+    private Integer ID;
 
     public Pessoa(String name) {
         this.name = name;

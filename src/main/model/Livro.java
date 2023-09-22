@@ -11,13 +11,13 @@ public class Livro {
     private String localizacao;
     private int ID;
 
-    public Livro(String titulo, String autor, String editora, Integer ISBN, String categoria, boolean disponibilidade, String localizacao) {
+    public Livro(String titulo, String autor, String editora, Integer ISBN, String categoria, String localizacao) {
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
         this.ISBN = ISBN;
         this.categoria = categoria;
-        this.disponibilidade = disponibilidade;
+        this.disponibilidade = true;
         this.localizacao = localizacao;
     }
 
