@@ -98,7 +98,7 @@ public class BlibUseCases {
         }
 
         Usuario temp = daoUsuario.findById(IDusuario); //atualizando no user do usuario
-        temp.setDataDaMulta(dataRecente);
+        temp.setDataDaMulta(dataRecente.plusDays(diasAtrasado));
         daoUsuario.update(temp,temp.getID());
 
 
