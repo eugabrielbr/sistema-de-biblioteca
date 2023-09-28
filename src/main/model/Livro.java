@@ -1,5 +1,11 @@
 package main.model;
 
+import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Livro {
 
     private String titulo;
@@ -9,9 +15,14 @@ public class Livro {
     private String categoria;
     private boolean disponibilidade;
     private String localizacao;
-    private int ID;
+    private Integer ID;
+    private Queue<Integer> filaReserva;
+    private LocalDate dataReserva;
+
+    private Integer qtdEmprestimo;
 
     public Livro(String titulo, String autor, String editora, Integer ISBN, String categoria, String localizacao) {
+
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
@@ -19,13 +30,30 @@ public class Livro {
         this.categoria = categoria;
         this.disponibilidade = true;
         this.localizacao = localizacao;
+        this.filaReserva = new LinkedList<>();
+        this.qtdEmprestimo = 0;
+        this.setDataReserva(null);
+
     }
 
     public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
+    public void setarMaisUm(){
+
+        qtdEmprestimo++;
+
+    }
+    public Integer getQtdEmprestimo() {
+        return qtdEmprestimo;
+    }
+
+    public void setQtdEmprestimo( Integer qtdEmprestimo ) {
+        this.qtdEmprestimo = qtdEmprestimo;
+    }
+
+    public void setTitulo( String titulo) {
         this.titulo = titulo;
     }
 
@@ -57,7 +85,7 @@ public class Livro {
         return disponibilidade;
     }
 
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 
@@ -100,6 +128,43 @@ public class Livro {
                 ", disponibilidade=" + disponibilidade +
                 ", localizacao='" + localizacao + '\'' +
                 ", ID=" + ID +
+                ", dataReserva=" + dataReserva +
+                ", qtdEmprestimo=" + qtdEmprestimo +
                 '}';
+    }
+
+
+
+
+    public Queue<Integer> getFilaReserva() {
+        return filaReserva;
+    }
+
+    public void setFilaReserva( Queue<Integer> filaReserva ) {
+        this.filaReserva = filaReserva;
+    }
+
+    public LocalDate getDataReserva() {
+        return dataReserva;
+    }
+
+    public void setDataReserva( LocalDate dataReserva ) {
+        this.dataReserva = dataReserva;
+    }
+
+    public void adicionarReserva(Integer ID){
+
+        filaReserva.offer(ID);
+    }
+
+    public void removerFila(){
+
+        filaReserva.poll();
+
+    }
+
+    public Integer primeiroFila(){
+
+        return filaReserva.peek();
     }
 }
