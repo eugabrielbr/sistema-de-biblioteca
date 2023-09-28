@@ -14,10 +14,10 @@ public class Emprestimo {
 
 
 
-    public Emprestimo(Usuario usuario, LocalDate dataEmprestimo, LocalDate dataDevolucao, Livro livro) {
+    public Emprestimo(Usuario usuario, LocalDate dataEmprestimo, Livro livro) {
         this.usuario = usuario;
         this.dataEmprestimo = dataEmprestimo;
-        this.dataDevolucao = dataDevolucao;
+        this.dataDevolucao = dataEmprestimo.plusDays(10);
         this.livro = livro;
 
     }
@@ -63,6 +63,15 @@ public class Emprestimo {
         this.IDemprestimo = IDemprestimo;
     }
 
-
+    @Override
+    public String toString() {
+        return "Emprestimo{" +
+                "usuario=" + usuario +
+                ", dataEmprestimo=" + dataEmprestimo +
+                ", dataDevolucao=" + dataDevolucao +
+                ", livro=" + livro +
+                ", IDemprestimo=" + IDemprestimo +
+                '}';
+    }
 }
 

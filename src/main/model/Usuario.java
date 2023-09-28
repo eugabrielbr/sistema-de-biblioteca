@@ -14,12 +14,9 @@ public class Usuario extends Pessoa {
 
     private LocalDate dataDaMulta;
 
-    List<Emprestimo> historico = new ArrayList<>();
-    List<Emprestimo> livrosDevolvidos = new ArrayList<>();
+    private List<Emprestimo> historico;
+    private List<Emprestimo> livrosDevolvidos;
 
-    public void reservarLivros(Integer id){
-        //
-    }
 
     public void renovarEmprestimos(){
         //
@@ -39,6 +36,9 @@ public class Usuario extends Pessoa {
         super(name);
         this.endereco = endereco;
         this.telefone = telefone;
+        this.livrosDevolvidos = new ArrayList<>();
+        this.historico = new ArrayList<>();
+
 
     }
 
@@ -80,6 +80,11 @@ public class Usuario extends Pessoa {
 
     public void setQtdEmprestimos(int qtdEmprestimos) {
         this.qtdEmprestimos = qtdEmprestimos;
+
+    }
+
+    public void somarEmprestimos(){
+        qtdEmprestimos++;
     }
 
     public int getNumRenovacoes() {
@@ -97,15 +102,31 @@ public class Usuario extends Pessoa {
     @Override
     public String toString() {
         return "Usuario{" +
-                super.toString() +
                 "endereco='" + endereco + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", bloqueio=" + bloqueio +
                 ", qtdEmprestimos=" + qtdEmprestimos +
                 ", numRenovacoes=" + numRenovacoes +
+                ", dataDaMulta=" + dataDaMulta +
+                ", ID=" + getID() +
                 '}';
     }
 
+    public void testPrint( Integer opcao){
+
+        if (opcao == 1){
+            for (Emprestimo x : historico){
+                System.out.println(x);
+            }
+        }
+        else if(opcao == 2){
+            for (Emprestimo y : livrosDevolvidos){
+                System.out.println(y);
+            }
+        }
+
+
+    }
     public List<Emprestimo> getLivrosDevolvidos() {
         return livrosDevolvidos;
     }

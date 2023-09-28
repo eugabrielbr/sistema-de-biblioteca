@@ -1,6 +1,6 @@
 package main.dao.emprestimo;
 
-import main.exceptions.crud.CrudExceptions;
+import main.exceptions.crud.DAOExceptions;
 import main.model.Emprestimo;
 
 
@@ -34,17 +34,17 @@ public class EmprestimoDAOmap implements EmprestimoDAO{
     }
 
     @Override
-    public void delete( int ID ) throws CrudExceptions {
+    public void delete( int ID ) throws DAOExceptions {
 
         Emprestimo emprestimo = emprestimoMap.remove(ID);
 
         if (emprestimo == null){
-            throw new CrudExceptions(CrudExceptions.DELETE,ID);
+            throw new DAOExceptions(DAOExceptions.DELETE,ID);
         }
     }
 
     @Override
-    public void deleteMany() throws CrudExceptions {
+    public void deleteMany() throws DAOExceptions {
 
         this.emprestimoMap = new HashMap<>();
         this.ID = 0;
@@ -52,7 +52,7 @@ public class EmprestimoDAOmap implements EmprestimoDAO{
     }
 
     @Override
-    public void update( Emprestimo emprestimo, Integer number ) throws CrudExceptions {
+    public void update( Emprestimo emprestimo, Integer number ) throws DAOExceptions {
 
         Emprestimo get = emprestimoMap.get(ID);
 
@@ -63,7 +63,7 @@ public class EmprestimoDAOmap implements EmprestimoDAO{
 
         }
         else{
-            throw new CrudExceptions(CrudExceptions.UPDATE,ID);
+            throw new DAOExceptions(DAOExceptions.UPDATE,ID);
         }
         
     }
@@ -74,7 +74,7 @@ public class EmprestimoDAOmap implements EmprestimoDAO{
     }
 
     @Override
-    public Emprestimo findById( int id ) throws CrudExceptions {
+    public Emprestimo findById( int id ) throws DAOExceptions {
 
         Emprestimo busca = emprestimoMap.get(id);
 
@@ -82,7 +82,7 @@ public class EmprestimoDAOmap implements EmprestimoDAO{
             return busca;
         }
         else{
-            throw new CrudExceptions(CrudExceptions.NOT_FOUND,id);
+            throw new DAOExceptions(DAOExceptions.NOT_FOUND,id);
         }
     }
 
@@ -101,4 +101,6 @@ public class EmprestimoDAOmap implements EmprestimoDAO{
 
         return listaEmprestimo;
     }
+
+
 }

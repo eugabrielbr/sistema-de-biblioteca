@@ -1,7 +1,7 @@
 package main.dao.usuario;
 
 
-import main.exceptions.crud.CrudExceptions;
+import main.exceptions.crud.DAOExceptions;
 
 import main.model.Usuario;
 
@@ -9,7 +9,7 @@ import java.util.*;
 
 public class UsuarioDAOmap implements UsuarioDAO{
 
-    int ID;
+    private Integer ID;
     public Map<Integer, Usuario> usuarioMap;
     
     public UsuarioDAOmap(){
@@ -28,12 +28,12 @@ public class UsuarioDAOmap implements UsuarioDAO{
     }
 
     @Override
-    public void delete(int ID) throws CrudExceptions {
+    public void delete(int ID) throws DAOExceptions {
 
         Usuario usuario = usuarioMap.remove(ID);
 
         if (usuario == null){
-            throw new CrudExceptions(CrudExceptions.DELETE,ID);
+            throw new DAOExceptions(DAOExceptions.DELETE,ID);
         }
 
     }
@@ -47,7 +47,7 @@ public class UsuarioDAOmap implements UsuarioDAO{
     }
 
     @Override
-    public void update(Usuario usuario, Integer ID) throws CrudExceptions {
+    public void update(Usuario usuario, Integer ID) throws DAOExceptions {
 
         Usuario get = usuarioMap.get(ID);
 
@@ -58,7 +58,7 @@ public class UsuarioDAOmap implements UsuarioDAO{
 
         }
         else{
-            throw new CrudExceptions(CrudExceptions.UPDATE,ID);
+            throw new DAOExceptions(DAOExceptions.UPDATE,ID);
         }
     }
 
@@ -69,7 +69,7 @@ public class UsuarioDAOmap implements UsuarioDAO{
     }
 
     @Override
-    public Usuario findById(int id) throws CrudExceptions {
+    public Usuario findById(int id) throws DAOExceptions {
 
         Usuario busca = usuarioMap.get(id);
 
@@ -77,7 +77,7 @@ public class UsuarioDAOmap implements UsuarioDAO{
             return busca;
         }
         else{
-            throw new CrudExceptions(CrudExceptions.NOT_FOUND,id);
+            throw new DAOExceptions(DAOExceptions.NOT_FOUND,id);
         }
     }
 

@@ -1,7 +1,6 @@
 package main.dao.administrador;
 
-import main.exceptions.crud.CrudExceptions;
-import main.exceptions.crud.CrudExceptions;
+import main.exceptions.crud.DAOExceptions;
 import main.model.Administrador;
 
 import java.util.Map;
@@ -13,17 +12,17 @@ public class AdministradorDAOmap implements AdministradorDAO{ //CORRIGIR EXCECOE
     }
 
     @Override
-    public void delete( int ID ) throws CrudExceptions, CrudExceptions {
+    public void delete( int ID ) throws  DAOExceptions {
 
     }
 
     @Override
-    public void deleteMany() throws CrudExceptions {
+    public void deleteMany() throws  DAOExceptions {
 
     }
 
     @Override
-    public void update( Administrador obj, Integer number ) throws CrudExceptions, CrudExceptions {
+    public void update( Administrador obj, Integer number ) throws  DAOExceptions {
 
     }
 
@@ -33,7 +32,7 @@ public class AdministradorDAOmap implements AdministradorDAO{ //CORRIGIR EXCECOE
     }
 
     @Override
-    public Administrador findById( int id ) throws CrudExceptions, CrudExceptions {
+    public Administrador findById( int id ) throws DAOExceptions {
         return null;
     }
 }

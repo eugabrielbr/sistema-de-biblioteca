@@ -18,7 +18,7 @@ public class Pessoa {
         this.name = name;
     }
 
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 

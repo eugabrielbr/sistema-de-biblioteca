@@ -1,6 +1,6 @@
 package main.dao;
 
-import main.exceptions.crud.CrudExceptions;
+import main.exceptions.crud.DAOExceptions;
 
 
 import java.util.Map;
@@ -15,12 +15,12 @@ public interface CRUD<T> {
      * @param
      * @return
      */
-    public void delete(int ID) throws CrudExceptions;
+    public void delete(int ID) throws DAOExceptions;
 
     /**
      * Detela todos os dados
      */
-    public void deleteMany() throws CrudExceptions;
+    public void deleteMany() throws DAOExceptions;
 
     /**
      * Atualiza um objeto
@@ -28,7 +28,7 @@ public interface CRUD<T> {
      * @param obj
      * @return
      */
-    public void update(T obj, Integer number) throws CrudExceptions;
+    public void update(T obj, Integer number) throws DAOExceptions;
 
     /**
      * Ler toda a lista de dados
@@ -43,7 +43,7 @@ public interface CRUD<T> {
      * @param id
      * @return
      */
-    public T findById(int id) throws CrudExceptions;
+    public T findById(int id) throws DAOExceptions;
 
 
 }
