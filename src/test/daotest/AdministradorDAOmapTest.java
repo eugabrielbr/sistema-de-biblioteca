@@ -1,10 +1,8 @@
-package test.DAO;
+package test.daotest;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class EmprestimoDAOmapTest {
+class AdministradorDAOmapTest {
 
     @Test
     void create() {

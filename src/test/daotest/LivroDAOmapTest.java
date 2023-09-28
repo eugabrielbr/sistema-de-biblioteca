@@ -1,7 +1,7 @@
-package test.DAO;
+package test.daotest;
 
 import main.dao.livro.LivroDAOmap;
-import main.exceptions.crud.CrudExceptions;
+import main.exceptions.crud.DAOExceptions;
 import main.model.Livro;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -21,7 +21,7 @@ class LivroDAOmapTest {
 
     }
     @Test
-    void findByAutor() throws CrudExceptions {
+    void findByAutor() throws DAOExceptions {
 
         addLivro();
 
@@ -34,7 +34,7 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void findByTitulo() throws CrudExceptions {
+    void findByTitulo() throws DAOExceptions {
 
         addLivro();
 
@@ -47,7 +47,7 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void findByCategoria() throws CrudExceptions {
+    void findByCategoria() throws DAOExceptions {
 
         addLivro();
 
@@ -59,7 +59,7 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void findByISBN() throws CrudExceptions {
+    void findByISBN() throws DAOExceptions {
 
         addLivro();
 
@@ -71,14 +71,14 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void findById() throws CrudExceptions {
+    void findById() throws DAOExceptions {
 
         addLivro();
         Assertions.assertNotNull(obj.findById(1));
     }
 
     @Test
-    void create() throws CrudExceptions {
+    void create() throws DAOExceptions {
 
         addLivro();
         Assertions.assertNotNull(obj.findById(1));
@@ -93,14 +93,14 @@ class LivroDAOmapTest {
         try{
             obj.delete(1);
         }
-        catch (CrudExceptions e){
+        catch (DAOExceptions e){
             Assertions.fail();
         }
 
     }
 
     @Test
-    void deleteMany() throws CrudExceptions {
+    void deleteMany() throws DAOExceptions {
 
         addLivro();
         obj.deleteMany();
@@ -109,7 +109,7 @@ class LivroDAOmapTest {
     }
 
     @Test
-    void update() throws CrudExceptions {
+    void update() throws DAOExceptions {
 
         addLivro();
 
@@ -118,7 +118,7 @@ class LivroDAOmapTest {
         try{
             obj.update(objLivro,1);
         }
-        catch (CrudExceptions e){
+        catch (DAOExceptions e){
             Assertions.fail();
         }
 
