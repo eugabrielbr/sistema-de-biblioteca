@@ -9,7 +9,6 @@ public class Emprestimo {
     private LocalDate dataDevolucao;
     private Livro livro;
     private int IDemprestimo;
-    private int qtdRenovacoes;
 
     private boolean foiRenovado;
 
@@ -18,22 +17,8 @@ public class Emprestimo {
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataEmprestimo.plusDays(10);
         this.livro = livro;
-        this.qtdRenovacoes = 0;
         this.foiRenovado = false;
 
-    }
-
-    public void somarMaisRenovacoes(){
-
-        qtdRenovacoes++;
-
-    }
-    public int getQtdRenovacoes() {
-        return qtdRenovacoes;
-    }
-
-    public void setQtdRenovacoes( int qtdRenovacoes ) {
-        this.qtdRenovacoes = qtdRenovacoes;
     }
 
     public Usuario getUsuario() {
@@ -95,5 +80,6 @@ public class Emprestimo {
                 ", foiRenovado=" + foiRenovado +
                 '}';
     }
+
 }
 
