@@ -9,19 +9,32 @@ public class Emprestimo {
     private LocalDate dataDevolucao;
     private Livro livro;
     private int IDemprestimo;
+    private int qtdRenovacoes;
 
-
-
-
+    private boolean foiRenovado;
 
     public Emprestimo(Usuario usuario, LocalDate dataEmprestimo, Livro livro) {
         this.usuario = usuario;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataEmprestimo.plusDays(10);
         this.livro = livro;
+        this.qtdRenovacoes = 0;
+        this.foiRenovado = false;
 
     }
 
+    public void somarMaisRenovacoes(){
+
+        qtdRenovacoes++;
+
+    }
+    public int getQtdRenovacoes() {
+        return qtdRenovacoes;
+    }
+
+    public void setQtdRenovacoes( int qtdRenovacoes ) {
+        this.qtdRenovacoes = qtdRenovacoes;
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -63,6 +76,14 @@ public class Emprestimo {
         this.IDemprestimo = IDemprestimo;
     }
 
+    public boolean getFoiRenovado() {
+        return foiRenovado;
+    }
+
+    public void setFoiRenovado( boolean foiRenovado ) {
+        this.foiRenovado = foiRenovado;
+    }
+
     @Override
     public String toString() {
         return "Emprestimo{" +
@@ -71,6 +92,7 @@ public class Emprestimo {
                 ", dataDevolucao=" + dataDevolucao +
                 ", livro=" + livro +
                 ", IDemprestimo=" + IDemprestimo +
+                ", foiRenovado=" + foiRenovado +
                 '}';
     }
 }
