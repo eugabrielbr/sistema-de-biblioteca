@@ -1,6 +1,6 @@
 package main.dao;
 
-import main.exceptions.crud.DAOExceptions;
+import main.exceptions.dao.DAOExceptions;
 
 
 import java.util.Map;
