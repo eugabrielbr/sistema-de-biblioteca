@@ -68,7 +68,7 @@ public class BlibUseCases {
     }
 
     /**
-     * verifica quantos emprestimos o usuario ja fez
+     * verifica quantos emprestimos ativos o usuario tem
      * @param usuario objeto usuario
      * @param daoEmprestimo objeto do dao do emprestimo
      * @return true ou false
