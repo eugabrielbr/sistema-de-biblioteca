@@ -3,24 +3,42 @@ package main.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
+/**
+ * Classe com atributos e metodos relacionados as usuario
+ * @author Gabriel
+ */
 public class Usuario extends Pessoa {
 
+    /**
+     * endereco do usuario
+     */
     private String endereco;
+    /**
+     * telefone do usuario
+     */
     private String telefone;
+    /**
+     * situacao de bloqueio do usuario
+     */
     private boolean bloqueio;
+    /**
+     * quantidade de emprestimos do usuario
+     */
     private int qtdEmprestimos;
-    private int numRenovacoes;
-
+    /**
+     * data limite de multa do usuario
+     */
     private LocalDate dataDaMulta;
-
+    /**
+     * historico de emprestimos do usuario
+     */
     private List<Emprestimo> historico;
+    /**
+     * historico de devolucao do usuario
+     */
     private List<Emprestimo> livrosDevolvidos;
 
-
-    public void renovarEmprestimos(){
-        //
-    }
 
     public void registroHistoricoUser(Emprestimo emprestimo){
 
@@ -87,17 +105,12 @@ public class Usuario extends Pessoa {
         qtdEmprestimos++;
     }
 
-    public int getNumRenovacoes() {
-        return numRenovacoes;
-    }
-
-    public void setNumRenovacoes(int numRenovacoes) {
-        this.numRenovacoes = numRenovacoes;
-    }
 
     public List<Emprestimo> getHistorico() {
         return historico;
     }
+
+
 
     @Override
     public String toString() {
@@ -106,7 +119,6 @@ public class Usuario extends Pessoa {
                 ", telefone='" + telefone + '\'' +
                 ", bloqueio=" + bloqueio +
                 ", qtdEmprestimos=" + qtdEmprestimos +
-                ", numRenovacoes=" + numRenovacoes +
                 ", dataDaMulta=" + dataDaMulta +
                 ", ID=" + getID() +
                 '}';
