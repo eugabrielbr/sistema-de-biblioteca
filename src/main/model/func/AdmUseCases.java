@@ -4,22 +4,41 @@ import main.dao.DAO;
 import main.dao.emprestimo.EmprestimoDAO;
 import main.dao.livro.LivroDAO;
 import main.dao.usuario.UsuarioDAO;
-import main.exceptions.crud.DAOExceptions;
+import main.exceptions.dao.DAOExceptions;
 
 import main.model.Emprestimo;
 import main.model.Livro;
 import main.model.Usuario;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.*;
 import java.util.Map.Entry;
 
+/**
+ * Classe com metodos dos casos de uso do administrador
+ * @author Gabriel
+ */
 public class AdmUseCases {
 
-    UsuarioDAO daoUsuario = DAO.getUsuarioDAO(); //singleton usuario
+    /**
+     * objeto do dao do usuario
+     */
+    UsuarioDAO daoUsuario = DAO.getUsuarioDAO();
+    /**
+     * objeto do dao do livro
+     */
     LivroDAO daoLivro = DAO.getLivroDAO();
+    /**
+     * objeto do dao do emprestimo
+     */
     EmprestimoDAO daoEmprestimo = DAO.getEmprestimoDAO();
-    public Integer numeroLivrosEmprestados(){
+
+    /**
+     * conta e retorna o numero de livros emprestados
+     * @param daoEmprestimo objeto do dao do emprestimo
+     * @return quantidade de livros emprestados
+     */
+    public Integer numeroLivrosEmprestados(EmprestimoDAO daoEmprestimo){
 
         Integer quant = 0;
 
@@ -30,13 +49,21 @@ public class AdmUseCases {
         return quant;
     }
 
-    public Integer qtdLivrosAtrasados(){
+    /**
+     * conta e retorna a quantidadade de livros atrasados
+     * @param daoEmprestimo objeto do dao do emprestimo
+     * @param dataLocal data do sistema
+     * @return quantidade de livros atrasados
+     */
+    public Integer qtdLivrosAtrasados(EmprestimoDAO daoEmprestimo,LocalDate dataLocal){
 
         Integer quant = 0;
 
         for (Entry<Integer,Emprestimo> x : daoEmprestimo.findMany().entrySet()){
 
-            if (x.getValue().getDataDevolucao() != null && x.getValue().getDataDevolucao().isBefore(LocalDate.now())){
+            if (x.getValue().getDataDevolucao() != null && x.getValue().getDataDevolucao().isBefore(dataLocal)){
+
+
                 quant++;
             }
 
@@ -45,7 +72,38 @@ public class AdmUseCases {
 
     }
 
-    public Integer qtdLivrosReservados(){
+    /**
+     * busca e retorna a lista de livros mais populares em ordem
+     * @param daoLivro objeto do dao do livro
+     * @return lista de livros
+     */
+    public List<Livro> livrosMaisPopulares(LivroDAO daoLivro){
+
+        Map<Integer,Livro> map = daoLivro.findMany();
+        List<Livro> lista = new ArrayList<>();
+
+        for(Entry<Integer,Livro> x : map.entrySet()){
+            lista.add(x.getValue());
+        }
+
+        Comparator<Livro> compararEmprestimos = Comparator.comparingInt(Livro::getQtdEmprestimo).reversed();
+        Collections.sort(lista,compararEmprestimos);
+
+        if (!lista.isEmpty()){
+            return lista; //retorna lista do maior para o menor de acordo com o numero de emprestimo
+        } else{
+            return null;
+        }
+
+
+    }
+
+    /**
+     * busca e retorna a quantidade de livros atrasados
+     * @param daoLivro objeto do dao do livro
+     * @return quantidade de livros atrasados
+     */
+    public Integer qtdLivrosReservados(LivroDAO daoLivro){
 
         Integer quant = 0;
 
@@ -60,13 +118,27 @@ public class AdmUseCases {
 
     }
 
-    public List<Emprestimo> emprestimoUsuario(Integer usuario) throws DAOExceptions {
+    /**
+     * busca e retorna e historico de emprestimos do usuario
+     * @param usuario objeto do usuario
+     * @param daoUsuario objeto do dao do usuario
+     * @return lista do historico de emprestimos
+     * @throws DAOExceptions excecao do dao
+     */
+    public List<Emprestimo> emprestimoUsuario(Integer usuario,UsuarioDAO daoUsuario) throws DAOExceptions {
 
         List<Emprestimo> lista = daoUsuario.findById(usuario).getHistorico();
         return lista;
     }
 
-    public void bloquearDesbloquearUsuario( Integer ID, Integer option) throws DAOExceptions {
+    /**
+     * bloqueia e desbloqueia usuario
+     * @param ID id do usuario
+     * @param option opcao entre desbloquear e bloquear
+     * @param daoUsuario objeto do dao do usuario
+     * @throws DAOExceptions exececao do dao
+     */
+    public void bloquearDesbloquearUsuario( Integer ID, Integer option,UsuarioDAO daoUsuario) throws DAOExceptions {
 
         //1 - bloquear
         //2 - desbloquear
