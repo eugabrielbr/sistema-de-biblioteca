@@ -4,7 +4,8 @@ import main.dao.DAO;
 import main.dao.emprestimo.EmprestimoDAO;
 import main.dao.livro.LivroDAO;
 import main.dao.usuario.UsuarioDAO;
-import main.exceptions.crud.DAOExceptions;
+import main.exceptions.usecases.BlibUseCaseExceptions;
+import main.exceptions.dao.DAOExceptions;
 import main.model.Emprestimo;
 import main.model.Livro;
 import main.model.Usuario;
@@ -13,31 +14,47 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 import java.util.List;
-//LEMBRAR DE MANDAR PARA AS FUNCOES OS OBJETOS DO SIGLETON
-public class BlibUseCases {
 
+/**
+ * Classe com metodos dos casos de uso do bibliotecario
+ * @author Gabriel
+ */
+public class BlibUseCases {
+    /**
+     * objeto do dao do usuario
+     */
     UsuarioDAO daoUsuario = DAO.getUsuarioDAO(); //singleton usuario
+    /**
+     * objeto do dao do livro
+     */
     LivroDAO daoLivro = DAO.getLivroDAO();
+    /**
+     * objeto do dao do emprestimo
+     */
     EmprestimoDAO daoEmprestimo = DAO.getEmprestimoDAO();
 
-    //TODOS OS MESSAGES SAO EXCECOES
+    /**
+     * atualiza a reserva do livro
+     * @param IDLivro id do livro
+     * @param daoLivro objeto do dao do livro
+     * @param dataLocal data do sistema
+     * @throws DAOExceptions excecao do dao
+     */
     public void atualizarReserva(Integer IDLivro,LivroDAO daoLivro, LocalDate dataLocal) throws DAOExceptions {
 
         Livro livro = daoLivro.findById(IDLivro);
 
         if (!livro.getFilaReserva().isEmpty()){
 
-            if (livro.getDataReserva().isBefore(dataLocal)) {
+            if (livro.getDataReserva() == null || livro.getDataReserva().isBefore(dataLocal)) {
 
-                livro.removerFila();//remover da lista
+                if (livro.getDataReserva() != null) {
+                    livro.removerFila();//remover da lista
+                }
 
                 if (livro.getDisponibilidade() && !livro.getFilaReserva().isEmpty()){
 
                     livro.setDataReserva(dataLocal.plusDays(7));
-
-                }
-                else{
-                    livro.setDataReserva(null);
 
                 }
 
@@ -50,6 +67,12 @@ public class BlibUseCases {
 
     }
 
+    /**
+     * verifica quantos emprestimos o usuario ja fez
+     * @param usuario objeto usuario
+     * @param daoEmprestimo objeto do dao do emprestimo
+     * @return true ou false
+     */
     public boolean qtdEmprestimos(Integer usuario,EmprestimoDAO daoEmprestimo){
 
         List<Emprestimo> lista = daoEmprestimo.findByUser(usuario);
@@ -62,24 +85,33 @@ public class BlibUseCases {
         }
     }
 
-
-    public void registroEmprestimo( Emprestimo emprestimo, LivroDAO daoLivro, UsuarioDAO daoUsuario, EmprestimoDAO daoEmprestimo, LocalDate dataLocal) throws DAOExceptions {
+    /**
+     * registra emprestimo e atualiza dados do usuario, livro e emprestimo
+     * @param emprestimo objeto do emprestimo
+     * @param daoLivro objeto do dao do livro
+     * @param daoUsuario objeto do dao do usuario
+     * @param daoEmprestimo objeto do dao do emprestimo
+     * @param dataLocal data do sistema
+     * @throws DAOExceptions excecao dao
+     * @throws BlibUseCaseExceptions excecao blibusecases
+     */
+    public void registroEmprestimo( Emprestimo emprestimo, LivroDAO daoLivro, UsuarioDAO daoUsuario, EmprestimoDAO daoEmprestimo, LocalDate dataLocal) throws DAOExceptions, BlibUseCaseExceptions {
 
         atualizarMulta(emprestimo.getUsuario().getID(), daoEmprestimo,daoUsuario,dataLocal);
-        atualizarReserva(emprestimo.getLivro().getID(),daoLivro,dataLocal);
+        atualizarReserva(emprestimo.getLivro().getID(),daoLivro,emprestimo.getDataEmprestimo());
         Usuario user1 = daoUsuario.findById(emprestimo.getUsuario().getID());
         boolean qtdEmprestimosAtivos = qtdEmprestimos(user1.getID(),daoEmprestimo);
 
         Livro resultLivro = daoLivro.findById(emprestimo.getLivro().getID()); //buscando o livro que vai ser emprestado
 
 
-        if (qtdEmprestimosAtivos == true) {
+        if (qtdEmprestimosAtivos) {
             //System.out.println("if 1");
             if (emprestimo.getLivro().primeiroFila() == emprestimo.getUsuario().getID() || emprestimo.getLivro().primeiroFila() == null) {
                 //System.out.println("if 2");
                 if (emprestimo.getLivro().getDisponibilidade() && !emprestimo.getUsuario().getBloqueio()) {
                     //System.out.println("if 3");
-                    if ((user1.getDataDaMulta() == null) || user1.getDataDaMulta().isBefore(dataLocal)) {
+                    if ((user1.getDataDaMulta() == null) || user1.getDataDaMulta().isBefore(emprestimo.getDataEmprestimo())) {
                         //System.out.println("if 4");
                         daoEmprestimo.create(emprestimo); //registro emprestimo
 
@@ -97,21 +129,48 @@ public class BlibUseCases {
 
                     } else {
 
-                        String message = "Usuario multado";
+                        throw new BlibUseCaseExceptions(BlibUseCaseExceptions.MULTADO,  user1.getID());
                     }
                 }
+                else{
+
+                    if (!emprestimo.getLivro().getDisponibilidade()){
+
+                        throw new BlibUseCaseExceptions(BlibUseCaseExceptions.INDISPONIVEL, resultLivro.getID());
+
+                    }
+                    else if(emprestimo.getUsuario().getBloqueio()){
+
+                        throw new BlibUseCaseExceptions(BlibUseCaseExceptions.BLOQUEADO, user1.getID());
+
+                    }
+
+                }
+
             } else {
-                String message = "Livro ja reservado por outro usuario";
+
+                throw new BlibUseCaseExceptions(BlibUseCaseExceptions.RESERVADO, resultLivro.getID());
 
             }
         }
-        else{
-            String message = "Usuario com 3 emprestimos ja ativos";
+        else {
+            throw new BlibUseCaseExceptions(BlibUseCaseExceptions.ATIVOS, user1.getID());
         }
 
     }
 
-    public void registroDevolucao(Integer IDlivro, Integer usuario,EmprestimoDAO daoEmprestimo,LivroDAO daoLivro,UsuarioDAO daoUsuario,LocalDate dataLocal) throws DAOExceptions {
+    /**
+     *
+     * @param IDlivro id do livro
+     * @param usuario objeto usuario
+     * @param daoEmprestimo objeto do dao do emprestimo
+     * @param daoLivro objeto do dao do livro
+     * @param daoUsuario objeto do dao do usuario
+     * @param dataLocal data do sistema
+     * @throws DAOExceptions excecao dao
+     * @throws BlibUseCaseExceptions excecao biblibusecases
+     */
+    public void registroDevolucao(Integer IDlivro, Integer usuario,EmprestimoDAO daoEmprestimo,LivroDAO daoLivro,UsuarioDAO daoUsuario,LocalDate dataLocal) throws DAOExceptions, BlibUseCaseExceptions {
 
         atualizarMulta(usuario,daoEmprestimo,daoUsuario,dataLocal);
 
@@ -119,26 +178,29 @@ public class BlibUseCases {
 
         Livro livro = daoLivro.findById(IDlivro); //busca do livro para att status
 
-
+        Emprestimo test = null;
 
         if (!livro.getFilaReserva().isEmpty()){
             livro.setDataReserva(dataLocal.plusDays(7)); //dias que o reserva pode pegar o livro
         }
         else{
-            livro.setDisponibilidade(true);
             livro.setDataReserva(null);
         }
 
+        livro.setDisponibilidade(true);
         daoLivro.update(livro,IDlivro);
 
         Usuario user = daoUsuario.findById(usuario); //registrar devolucao no historico do usuario
-        for (Emprestimo x : lista){
 
-            if (x.getLivro().getID() == livro.getID()){
-                user.registrosLivrosDevolvidos(x);
-                daoEmprestimo.delete(x.getIDemprestimo());
-                break;
-            }
+        try{
+
+            Emprestimo emprestimo = daoEmprestimo.findByIDlivroIDusuario(IDlivro,usuario);
+            user.registrosLivrosDevolvidos(emprestimo);
+            daoEmprestimo.delete(emprestimo.getIDemprestimo());
+
+        }catch (DAOExceptions e){
+
+            throw new BlibUseCaseExceptions(BlibUseCaseExceptions.FAILDEVOLUCAO, livro.getID());
         }
 
         daoUsuario.update(user,usuario); //atualiza o objeto com o historico do usuario
@@ -146,6 +208,14 @@ public class BlibUseCases {
 
     }
 
+    /**
+     * calcula a atualiza a multa do usuario
+     * @param IDusuario id do usuario
+     * @param daoEmprestimo objeto do dao do emprestimo
+     * @param daoUsuario objeto do dao do usuario
+     * @param dataLocal data do sistema
+     * @throws DAOExceptions excecao dao
+     */
     public void atualizarMulta( Integer IDusuario, EmprestimoDAO daoEmprestimo, UsuarioDAO daoUsuario, LocalDate dataLocal) throws DAOExceptions {
 
         List<Emprestimo> lista = daoEmprestimo.findByUser(IDusuario);
