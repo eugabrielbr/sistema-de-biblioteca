@@ -1,15 +1,25 @@
 package main.dao.livro;
 
-import main.exceptions.crud.DAOExceptions;
+import main.exceptions.dao.DAOExceptions;
 import main.model.Livro;
 
 import java.util.*;
 import java.util.Map.Entry;
 
+/**
+ * DAO da classe Livro
+ * @author Gabriel
+ */
 public class LivroDAOmap implements LivroDAO {
 
+    /**
+     * contador para ID
+     */
     private Integer ID;
-    public Map<Integer,Livro> acervo;
+    /**
+     * map que vai guardar os dados
+     */
+    private Map<Integer,Livro> acervo;
 
     public LivroDAOmap(){
 
@@ -17,6 +27,12 @@ public class LivroDAOmap implements LivroDAO {
         this.acervo = new HashMap<>();
     }
 
+    /**
+     * busca livros e retorna lista de livros de acordo com o autor
+     * @param autor autor do livro
+     * @return lista de livros
+     * @throws DAOExceptions excecoes do dao
+     */
     public List<Livro> findByAutor(String autor) throws DAOExceptions {
 
 
@@ -37,7 +53,12 @@ public class LivroDAOmap implements LivroDAO {
         }
 
     }
-
+    /**
+     * busca livros e retorna lista de livros de acordo com o titulo
+     * @param titulo titulo do livro
+     * @return lista de livros
+     * @throws DAOExceptions excecoes do dao
+     */
     public List<Livro> findByTitulo(String titulo) throws DAOExceptions {
 
         List <Livro> lista = new ArrayList<>();
@@ -56,7 +77,12 @@ public class LivroDAOmap implements LivroDAO {
             return lista;
         }
     }
-
+    /**
+     * busca livros e retorna lista de livros de acordo com a categoria
+     * @param categoria categoria do livro
+     * @return lista de livros
+     * @throws DAOExceptions excecoes do dao
+     */
     public List<Livro> findByCategoria(String categoria) throws DAOExceptions {
 
         List <Livro> lista = new ArrayList<>();
@@ -75,7 +101,12 @@ public class LivroDAOmap implements LivroDAO {
             return lista;
         }
     }
-
+    /**
+     * busca livros e retorna lista de livros de acordo com o ISBN
+     * @param ISBN ISBN do livro
+     * @return lista de livros
+     * @throws DAOExceptions excecoes do dao
+     */
     public List<Livro> findByISBN(Integer ISBN) throws DAOExceptions {
 
         List <Livro> lista = new ArrayList<>();
@@ -95,7 +126,10 @@ public class LivroDAOmap implements LivroDAO {
         }
     }
 
-
+    /**
+     * registra livro
+     * @param livro objeto livro
+     */
     @Override
     public void create(Livro livro){
 
@@ -105,6 +139,11 @@ public class LivroDAOmap implements LivroDAO {
 
     }
 
+    /**
+     * deleta livros
+     * @param ID id do livro
+     * @throws DAOExceptions excecoes do dao
+     */
     @Override
     public void delete(int ID) throws DAOExceptions {
 
@@ -117,6 +156,10 @@ public class LivroDAOmap implements LivroDAO {
 
     }
 
+    /**
+     * deleta dos os dados e zera o contador de id
+     * @throws DAOExceptions excecoes do dao
+     */
     @Override
     public void deleteMany() throws DAOExceptions {
 
@@ -125,6 +168,12 @@ public class LivroDAOmap implements LivroDAO {
 
     }
 
+    /**
+     * atualiza um livro por outro
+     * @param livro objeto livro
+     * @param ID id do livro que vai ser substituido
+     * @throws DAOExceptions excecoes do dao
+     */
     @Override
     public void update(Livro livro, Integer ID) throws DAOExceptions {
 
@@ -143,6 +192,10 @@ public class LivroDAOmap implements LivroDAO {
 
     }
 
+    /**
+     * retorna o map acervo
+     * @return map de livros
+     */
     @Override
     public Map<Integer,Livro> findMany() {
 
@@ -150,8 +203,15 @@ public class LivroDAOmap implements LivroDAO {
 
     }
 
+    /**
+     * busca e retorna livro por id
+     * @param id id do livro
+     * @return livro buscado
+     * @throws DAOExceptions excecoes do dao
+     */
     @Override
     public Livro findById(int id) throws DAOExceptions {
+
         Livro busca = acervo.get(id);
 
         if (busca != null){

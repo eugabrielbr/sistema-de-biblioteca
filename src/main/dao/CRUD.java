@@ -5,6 +5,11 @@ import main.exceptions.dao.DAOExceptions;
 
 import java.util.Map;
 
+/**
+ * interface do crud
+ * @param <T> objeto generico
+ */
+
 public interface CRUD<T> {
 
     public void create(T obj);

@@ -1,26 +1,67 @@
 package main.model;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
-
+import java.util.*;
+/**
+ * Classe com atributos e metodos relacionados aos livros
+ * @author Gabriel
+ */
 public class Livro {
 
+    /**
+     * titulo do livro
+     */
     private String titulo;
+    /**
+     * autor do livro
+     */
     private String autor;
+    /**
+     * editora do livro
+     */
     private String editora;
+    /**
+     * ISBN do livro
+     */
     private Integer ISBN;
+    /**
+     * categoria do livro
+     */
     private String categoria;
+    /**
+     * disponibilidade do livro
+     */
     private boolean disponibilidade;
+    /**
+     * localizacao do livro
+     */
     private String localizacao;
+    /**
+     * ID do livro
+     */
     private Integer ID;
+    /**
+     * fila com os usuarios que reservaram o livro
+     */
     private Queue<Integer> filaReserva;
+    /**
+     * prazo para o usuario com prioridade fazer o emprestimo
+     */
     private LocalDate dataReserva;
-
+    /**
+     * quantidade de emprestimos feitos
+     */
     private Integer qtdEmprestimo;
 
+    /**
+     *
+     * @param titulo titulo do livro
+     * @param autor autor do livro
+     * @param editora editora do livro
+     * @param ISBN ISBN do livro
+     * @param categoria categoria do livro
+     * @param localizacao localizacao do livro
+     */
     public Livro(String titulo, String autor, String editora, Integer ISBN, String categoria, String localizacao) {
 
         this.titulo = titulo;
@@ -32,7 +73,7 @@ public class Livro {
         this.localizacao = localizacao;
         this.filaReserva = new LinkedList<>();
         this.qtdEmprestimo = 0;
-        this.setDataReserva(null);
+        this.dataReserva = null;
 
     }
 
@@ -40,6 +81,9 @@ public class Livro {
         return titulo;
     }
 
+    /**
+     * seta mais um na quantidade de emprestimos
+     */
     public void setarMaisUm(){
 
         qtdEmprestimo++;
@@ -79,10 +123,6 @@ public class Livro {
 
     public void setISBN(int ISBN) {
         this.ISBN = ISBN;
-    }
-
-    public boolean isDisponibilidade() {
-        return disponibilidade;
     }
 
     public Integer getID() {
@@ -134,8 +174,6 @@ public class Livro {
     }
 
 
-
-
     public Queue<Integer> getFilaReserva() {
         return filaReserva;
     }
@@ -152,17 +190,28 @@ public class Livro {
         this.dataReserva = dataReserva;
     }
 
+    /**
+     * adiciona id de usuario na reserva
+     * @param ID id do usuario
+     */
     public void adicionarReserva(Integer ID){
 
         filaReserva.offer(ID);
     }
 
+    /**
+     * remove o primeiro da fila
+     */
     public void removerFila(){
 
         filaReserva.poll();
 
     }
 
+    /**
+     * pega o primeiro da fila e retorna
+     * @return primeiro da fila
+     */
     public Integer primeiroFila(){
 
         return filaReserva.peek();

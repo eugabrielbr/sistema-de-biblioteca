@@ -1,16 +1,26 @@
 package main.dao.usuario;
 
 
-import main.exceptions.crud.DAOExceptions;
+import main.exceptions.dao.DAOExceptions;
 
 import main.model.Usuario;
 
 import java.util.*;
 
+/**
+ * DAO da classe Usuario
+ * @author Gabriel
+ */
 public class UsuarioDAOmap implements UsuarioDAO{
 
+    /**
+     * contador do ID
+     */
     private Integer ID;
-    public Map<Integer, Usuario> usuarioMap;
+    /**
+     * map que vai guardar os dados
+     */
+    private Map<Integer, Usuario> usuarioMap;
     
     public UsuarioDAOmap(){
 
@@ -18,6 +28,10 @@ public class UsuarioDAOmap implements UsuarioDAO{
         this.usuarioMap = new HashMap<>();
     }
 
+    /**
+     * registra usuario
+     * @param usuario objeto usuario
+     */
     @Override
     public void create( Usuario usuario ){
 
@@ -25,8 +39,14 @@ public class UsuarioDAOmap implements UsuarioDAO{
         usuario.setID(ID);
         usuarioMap.put(ID,usuario);
 
+
     }
 
+    /**
+     * deleta usuarios
+     * @param ID id usuario
+     * @throws DAOExceptions excecoes do dao
+     */
     @Override
     public void delete(int ID) throws DAOExceptions {
 
@@ -38,6 +58,9 @@ public class UsuarioDAOmap implements UsuarioDAO{
 
     }
 
+    /**
+     * deleta todos os dados e reseta o contador de id
+     */
     @Override
     public void deleteMany(){
 
@@ -46,6 +69,12 @@ public class UsuarioDAOmap implements UsuarioDAO{
         
     }
 
+    /**
+     * atualiza um usuario por outro
+     * @param usuario objeto usuario
+     * @param ID id do usuario que vai ser substituido
+     * @throws DAOExceptions excecoes do dao
+     */
     @Override
     public void update(Usuario usuario, Integer ID) throws DAOExceptions {
 
@@ -62,12 +91,22 @@ public class UsuarioDAOmap implements UsuarioDAO{
         }
     }
 
+    /**
+     * retorna o map de usuarios
+     * @return map de usuarios
+     */
     @Override
     public Map<Integer,Usuario> findMany() {
 
         return usuarioMap;
     }
 
+    /**
+     * busca e retorna usuario pelo seu id
+     * @param id id do usuario
+     * @return resultado da busca de usuario
+     * @throws DAOExceptions excecoes do dao
+     */
     @Override
     public Usuario findById(int id) throws DAOExceptions {
 

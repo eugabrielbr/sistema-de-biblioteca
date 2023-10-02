@@ -1,17 +1,45 @@
 package main.model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
+/**
+ * Classe com atributos e metodos relacionados aos emprestimos
+ * @author Gabriel
+ */
 public class Emprestimo {
 
+    /**
+     * objeto do usuario
+     */
     private Usuario usuario;
+    /**
+     * data do emprestimo
+     */
     private LocalDate dataEmprestimo;
+    /**
+     * data da devolucao
+     */
     private LocalDate dataDevolucao;
+    /**
+     * objeto livro
+     */
     private Livro livro;
+    /**
+     * id do emprestimo
+     */
     private int IDemprestimo;
-
+    /**
+     * se foi renovado ou nao
+     */
     private boolean foiRenovado;
 
+    /**
+     * construtor da classe
+     * @param usuario objeto usuario
+     * @param dataEmprestimo data de emprestimo
+     * @param livro objeto livro
+     */
     public Emprestimo(Usuario usuario, LocalDate dataEmprestimo, Livro livro) {
         this.usuario = usuario;
         this.dataEmprestimo = dataEmprestimo;
@@ -68,6 +96,7 @@ public class Emprestimo {
     public void setFoiRenovado( boolean foiRenovado ) {
         this.foiRenovado = foiRenovado;
     }
+
 
     @Override
     public String toString() {
