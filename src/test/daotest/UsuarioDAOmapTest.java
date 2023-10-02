@@ -3,34 +3,45 @@ package test.daotest;
 
 import main.dao.usuario.UsuarioDAOmap;
 
-import main.exceptions.crud.DAOExceptions;
+import main.exceptions.dao.DAOExceptions;
 import main.model.Usuario;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.Map;
 
 class UsuarioDAOmapTest {
 
     UsuarioDAOmap obj = new UsuarioDAOmap();
-    public void addUsuario(){
+
+
+    @BeforeEach
+    public void setUp(){
 
         Usuario objUsuario = new Usuario("gabriel", "undefined", "00000000");
         obj.create(objUsuario);
 
+
     }
+
+    @AfterEach
+    public void tearDown(){
+        obj.deleteMany();
+    }
+
     @Test
     void create() throws DAOExceptions {
 
-        addUsuario();
-        Assertions.assertNotNull(obj.findById(1));
+        Usuario usuario = new Usuario("gabriel", "undefined", "00000000");
+        obj.create(usuario);
+
+        Assertions.assertEquals(usuario,obj.findById(2)); //testando se o mesmo objeto foi registrado
+
 
     }
 
     @Test
-    void delete() {
+    void delete() throws DAOExceptions {
 
-        addUsuario();
 
         try{
             obj.delete(1);
@@ -44,25 +55,19 @@ class UsuarioDAOmapTest {
     @Test
     void deleteMany() {
 
-        addUsuario();
         obj.deleteMany();
-        Assertions.assertTrue(obj.usuarioMap.isEmpty());
+        Assertions.assertTrue(obj.findMany().isEmpty());
     }
 
 
     @Test
-    void update() {
+    void update() throws DAOExceptions {
 
-        addUsuario();
 
         Usuario objUsuario = new Usuario("gabri", "undefined", "00000000");
+        obj.update(objUsuario,1);
 
-        try{
-            obj.update(objUsuario,1);
-        }
-        catch (DAOExceptions e){
-            Assertions.fail();
-        }
+        Assertions.assertEquals(objUsuario,obj.findById(1));
     }
 
     @Test
@@ -76,7 +81,6 @@ class UsuarioDAOmapTest {
     @Test
     void findById() throws DAOExceptions {
 
-        addUsuario();
         Assertions.assertNotNull(obj.findById(1));
 
     }
