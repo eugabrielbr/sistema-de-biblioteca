@@ -57,3 +57,4 @@ Para rodar os testes de unidade, baixe o repositório e abra pela IDE Intellij. 
 ## Ferramentas
 
 * [IntelliJ IDEA Community](https://www.jetbrains.com/idea/download/) - IDE utilizado para codificação
+.
