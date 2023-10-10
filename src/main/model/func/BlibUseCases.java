@@ -160,7 +160,7 @@ public class BlibUseCases {
     }
 
     /**
-     *
+     * registra a devolucao do usuario e atualiza informacaoes
      * @param IDlivro id do livro
      * @param usuario objeto usuario
      * @param daoEmprestimo objeto do dao do emprestimo
@@ -174,21 +174,7 @@ public class BlibUseCases {
 
         atualizarMulta(usuario,daoEmprestimo,daoUsuario,dataLocal);
 
-        List<Emprestimo> lista = daoEmprestimo.findByUser(usuario); //lista com emprestimos do usuario que correspondem ao seu id
-
         Livro livro = daoLivro.findById(IDlivro); //busca do livro para att status
-
-        Emprestimo test = null;
-
-        if (!livro.getFilaReserva().isEmpty()){
-            livro.setDataReserva(dataLocal.plusDays(7)); //dias que o reserva pode pegar o livro
-        }
-        else{
-            livro.setDataReserva(null);
-        }
-
-        livro.setDisponibilidade(true);
-        daoLivro.update(livro,IDlivro);
 
         Usuario user = daoUsuario.findById(usuario); //registrar devolucao no historico do usuario
 
@@ -197,12 +183,21 @@ public class BlibUseCases {
             Emprestimo emprestimo = daoEmprestimo.findByIDlivroIDusuario(IDlivro,usuario);
             user.registrosLivrosDevolvidos(emprestimo);
             daoEmprestimo.delete(emprestimo.getIDemprestimo());
+            livro.setDisponibilidade(true);
 
         }catch (DAOExceptions e){
 
             throw new BlibUseCaseExceptions(BlibUseCaseExceptions.FAILDEVOLUCAO, livro.getID());
         }
 
+        if (!livro.getFilaReserva().isEmpty()){
+            livro.setDataReserva(dataLocal.plusDays(7)); //dias que o reserva pode pegar o livro
+        }
+        else{
+            livro.setDataReserva(null);
+        }
+
+        daoLivro.update(livro,IDlivro);
         daoUsuario.update(user,usuario); //atualiza o objeto com o historico do usuario
 
 
