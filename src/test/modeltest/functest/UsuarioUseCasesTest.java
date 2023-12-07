@@ -19,6 +19,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.nio.channels.AsynchronousServerSocketChannel;
 import java.sql.SQLOutput;
 import java.time.LocalDate;
@@ -28,12 +29,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UsuarioUseCasesTest {
 
-    LivroDAOmap livrodao = new LivroDAOmap();
-    UsuarioDAOmap usuariodao = new UsuarioDAOmap();
+    LivroDAO livrodao = DAO.getLivroDAO();//SE DER MERDA VOLTAR PARA LIVRODAOMAP
+    UsuarioDAO usuariodao = DAO.getUsuarioDAO();
     BlibUseCases obj = new BlibUseCases();
-    EmprestimoDAOmap emprestimodao = new EmprestimoDAOmap();
+    EmprestimoDAO emprestimodao = DAO.getEmprestimoDAO();
     UsuarioUseCases objUsuarioUseCases = new UsuarioUseCases();
 
+    UsuarioUseCasesTest() throws IOException, ClassNotFoundException {
+    }
 
 
     //nao testei situacoes de multa ou bloqueio do usuario pq os testes dos metodos responsaveis estao localizados na classe BibliUseCasesTest
@@ -48,7 +51,7 @@ class UsuarioUseCasesTest {
 
     }
 
-    public void criandoUserLivro(){
+    public void criandoUserLivro() throws IOException, ClassNotFoundException {
 
         Usuario user = new Usuario("gabriel", "undefined", "00000000");
         Livro livro = new Livro("teoria da relativida","albert einstein",null,2222,"fisica",null);
@@ -57,7 +60,7 @@ class UsuarioUseCasesTest {
     }
 
     @AfterEach
-    public void tearDown() throws DAOExceptions {
+    public void tearDown() throws DAOExceptions, IOException, ClassNotFoundException {
 
         livrodao.deleteMany();
         usuariodao.deleteMany();
@@ -66,7 +69,7 @@ class UsuarioUseCasesTest {
     }
 
     @Test
-    void reservarLivros() throws DAOExceptions, UsuarioUseCasesExceptions {
+    void reservarLivros() throws DAOExceptions, UsuarioUseCasesExceptions, IOException, ClassNotFoundException {
 
         //TESTANDO RESERVAR LIVRO SEM PENDENCIAS
 
@@ -102,7 +105,7 @@ class UsuarioUseCasesTest {
     }
 
     @Test
-    void renovarLivros() throws DAOExceptions, BlibUseCaseExceptions, UsuarioUseCasesExceptions {
+    void renovarLivros() throws DAOExceptions, BlibUseCaseExceptions, UsuarioUseCasesExceptions, IOException, ClassNotFoundException {
 
         //TESTANDO RENOVAR EMPRESTIMO SEM PENDENCIAS
         criandoUserLivro();//registrando usuario e livro

@@ -10,24 +10,17 @@ import main.model.Emprestimo;
 import main.model.Livro;
 import main.model.Usuario;
 
+import java.io.IOException;
 import java.time.LocalDate;
 /**
  * Classe com metodos dos casos de uso do usuario
  * @author Gabriel
  */
 public class UsuarioUseCases {
-    /**
-     * objeto do dao do livro
-     */
-    LivroDAO daoLivro = DAO.getLivroDAO();
-    /**
-     * objeto do dao do usuario
-     */
-    UsuarioDAO daoUsuario = DAO.getUsuarioDAO();
-    /**
-     * objeto do dao do emprestimo
-     */
-    EmprestimoDAO daoEmprestimo = DAO.getEmprestimoDAO();
+
+    public UsuarioUseCases() throws IOException, ClassNotFoundException {
+
+    }
 
     /**
      * registra e atualiza informacoes referentes a reserva de livros
@@ -39,7 +32,7 @@ public class UsuarioUseCases {
      * @throws DAOExceptions excecao dao
      * @throws UsuarioUseCasesExceptions excecao usuariousecases
      */
-    public void reservarLivros( Integer IDlivro, Integer IDusuario, LocalDate dataLocal,LivroDAO  daoLivro, UsuarioDAO daoUsuario) throws DAOExceptions, UsuarioUseCasesExceptions {
+    public void reservarLivros( Integer IDlivro, Integer IDusuario, LocalDate dataLocal,LivroDAO  daoLivro, UsuarioDAO daoUsuario) throws DAOExceptions, UsuarioUseCasesExceptions, IOException, ClassNotFoundException {
 
 
         Livro livro = daoLivro.findById(IDlivro);
@@ -78,7 +71,7 @@ public class UsuarioUseCases {
      * @throws DAOExceptions excecao dao
      * @throws UsuarioUseCasesExceptions excecao usuariousecases
      */
-    public void renovarLivros(Integer IDlivro, Integer IDusuario,LocalDate dataLocal,LivroDAO daoLivro,UsuarioDAO daoUsuario,EmprestimoDAO daoEmprestimo) throws DAOExceptions, UsuarioUseCasesExceptions {
+    public void renovarLivros(Integer IDlivro, Integer IDusuario,LocalDate dataLocal,LivroDAO daoLivro,UsuarioDAO daoUsuario,EmprestimoDAO daoEmprestimo) throws DAOExceptions, UsuarioUseCasesExceptions, IOException, ClassNotFoundException {
 
         BlibUseCases obj = new BlibUseCases();
         obj.atualizarReserva(IDlivro,daoLivro,dataLocal);

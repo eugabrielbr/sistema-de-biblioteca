@@ -1,5 +1,8 @@
 package test.daotest;
 
+import main.dao.DAO;
+import main.dao.SaveAndLoad;
+import main.dao.operadores.OperadoresDAO;
 import main.dao.operadores.OperadoresDAOmap;
 import main.exceptions.dao.DAOExceptions;
 import main.model.Livro;
@@ -9,14 +12,23 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.Map;
 
 class OperadoresDAOmapTest {
+    /**
+     * objeto da classe OperadoresDAOmap
+     */
+    OperadoresDAO obj = DAO.getOperadoresDAO();
 
-    OperadoresDAOmap obj = new OperadoresDAOmap();
+    OperadoresDAOmapTest() throws IOException, ClassNotFoundException {
+    }
     //1 adm   2 biblio
+    /**
+     * condicao inicial antes dos testes
+     */
     @BeforeEach
-    public void setUp(){
+    public void setUp() throws IOException, ClassNotFoundException {
 
         Operadores operadores = new Operadores("Rafael",1,"tosta123");
         Operadores operadores2 = new Operadores("Pamela",2,"cortez123");
@@ -24,22 +36,30 @@ class OperadoresDAOmapTest {
         obj.create(operadores2);
 
     }
-
+    /**
+     * condicao para o final de cada teste
+     * @throws DAOExceptions excecoes do dao
+     */
     @AfterEach
-    public void tearDown() throws DAOExceptions {
+    public void tearDown() throws DAOExceptions, IOException, ClassNotFoundException {
         obj.deleteMany();
     }
-
+    /**
+     * testando registro de operadores
+     * @throws DAOExceptions excecoes do dao
+     */
     @Test
-    void create() throws DAOExceptions {
+    void create() throws DAOExceptions, IOException, ClassNotFoundException {
         Operadores operadores = new Operadores("Rafael",1,"tosta123");
         obj.create(operadores);
 
         Assertions.assertEquals(operadores,obj.findById(3)); //testando se o mesmo objeto foi registrado
     }
-
+    /**
+     * testando exclusão de objetos
+     */
     @Test
-    void delete() {
+    void delete() throws IOException, ClassNotFoundException {
         try{
             obj.delete(1);
         }
@@ -47,30 +67,43 @@ class OperadoresDAOmapTest {
             Assertions.fail();
         }
     }
-
+    /**
+     * testando exclusao de todos os dados
+     * @throws DAOExceptions excecoes do dao
+     */
     @Test
-    void deleteMany() throws DAOExceptions {
+    void deleteMany() throws DAOExceptions, IOException, ClassNotFoundException {
 
         obj.deleteMany();
         Assertions.assertTrue(obj.findMany().isEmpty());
     }
-
+    /**
+     * testando a atualizacao de objetos
+     * @throws DAOExceptions excecoes do dao
+     */
     @Test
-    void update() throws DAOExceptions {
+    void update() throws DAOExceptions, IOException, ClassNotFoundException {
 
         Operadores operadores2 = new Operadores("Pamela",2,"cortez123");
         obj.update(operadores2,1);
 
+        SaveAndLoad<Operadores> test = new SaveAndLoad<>("operadores.bin");
+
         Assertions.assertEquals(operadores2,obj.findById(1)); //testando se o mesmo objeto foi atualizado
     }
-
+    /**
+     * testando se a estrutura de dados é retornada
+     */
     @Test
     void findMany() {
 
         Map<Integer,Operadores> map = obj.findMany();
         Assertions.assertNotNull(map);
     }
-
+    /**
+     * testando pesquisa por ID
+     * @throws DAOExceptions excecoes do dao
+     */
     @Test
     void findById() throws DAOExceptions {
 

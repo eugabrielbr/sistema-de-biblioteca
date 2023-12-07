@@ -9,6 +9,8 @@ import main.exceptions.dao.DAOExceptions;
 import main.model.Emprestimo;
 import main.model.Livro;
 import main.model.Usuario;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -20,18 +22,12 @@ import java.util.List;
  * @author Gabriel
  */
 public class BlibUseCases {
-    /**
-     * objeto do dao do usuario
-     */
-    UsuarioDAO daoUsuario = DAO.getUsuarioDAO(); //singleton usuario
-    /**
-     * objeto do dao do livro
-     */
-    LivroDAO daoLivro = DAO.getLivroDAO();
-    /**
-     * objeto do dao do emprestimo
-     */
-    EmprestimoDAO daoEmprestimo = DAO.getEmprestimoDAO();
+
+
+    public BlibUseCases() throws IOException, ClassNotFoundException {
+
+    }
+
 
     /**
      * atualiza a reserva do livro
@@ -40,7 +36,7 @@ public class BlibUseCases {
      * @param dataLocal data do sistema
      * @throws DAOExceptions excecao do dao
      */
-    public void atualizarReserva(Integer IDLivro,LivroDAO daoLivro, LocalDate dataLocal) throws DAOExceptions {
+    public void atualizarReserva(Integer IDLivro,LivroDAO daoLivro, LocalDate dataLocal) throws DAOExceptions, IOException, ClassNotFoundException {
 
         Livro livro = daoLivro.findById(IDLivro);
 
@@ -95,7 +91,7 @@ public class BlibUseCases {
      * @throws DAOExceptions excecao dao
      * @throws BlibUseCaseExceptions excecao blibusecases
      */
-    public void registroEmprestimo( Emprestimo emprestimo, LivroDAO daoLivro, UsuarioDAO daoUsuario, EmprestimoDAO daoEmprestimo, LocalDate dataLocal) throws DAOExceptions, BlibUseCaseExceptions {
+    public void registroEmprestimo( Emprestimo emprestimo, LivroDAO daoLivro, UsuarioDAO daoUsuario, EmprestimoDAO daoEmprestimo, LocalDate dataLocal) throws DAOExceptions, BlibUseCaseExceptions, IOException, ClassNotFoundException {
 
         atualizarMulta(emprestimo.getUsuario().getID(), daoEmprestimo,daoUsuario,dataLocal);
         atualizarReserva(emprestimo.getLivro().getID(),daoLivro,emprestimo.getDataEmprestimo());
@@ -170,7 +166,7 @@ public class BlibUseCases {
      * @throws DAOExceptions excecao dao
      * @throws BlibUseCaseExceptions excecao biblibusecases
      */
-    public void registroDevolucao(Integer IDlivro, Integer usuario,EmprestimoDAO daoEmprestimo,LivroDAO daoLivro,UsuarioDAO daoUsuario,LocalDate dataLocal) throws DAOExceptions, BlibUseCaseExceptions {
+    public void registroDevolucao(Integer IDlivro, Integer usuario,EmprestimoDAO daoEmprestimo,LivroDAO daoLivro,UsuarioDAO daoUsuario,LocalDate dataLocal) throws DAOExceptions, BlibUseCaseExceptions, IOException, ClassNotFoundException {
 
         atualizarMulta(usuario,daoEmprestimo,daoUsuario,dataLocal);
 
@@ -185,7 +181,7 @@ public class BlibUseCases {
             daoEmprestimo.delete(emprestimo.getIDemprestimo());
             livro.setDisponibilidade(true);
 
-        }catch (DAOExceptions e){
+        }catch (DAOExceptions | IOException | ClassNotFoundException e){
 
             throw new BlibUseCaseExceptions(BlibUseCaseExceptions.FAILDEVOLUCAO, livro.getID());
         }
@@ -211,7 +207,7 @@ public class BlibUseCases {
      * @param dataLocal data do sistema
      * @throws DAOExceptions excecao dao
      */
-    public void atualizarMulta( Integer IDusuario, EmprestimoDAO daoEmprestimo, UsuarioDAO daoUsuario, LocalDate dataLocal) throws DAOExceptions {
+    public void atualizarMulta( Integer IDusuario, EmprestimoDAO daoEmprestimo, UsuarioDAO daoUsuario, LocalDate dataLocal) throws DAOExceptions, IOException, ClassNotFoundException {
 
         List<Emprestimo> lista = daoEmprestimo.findByUser(IDusuario);
         List<LocalDate> listAux = new ArrayList<>();

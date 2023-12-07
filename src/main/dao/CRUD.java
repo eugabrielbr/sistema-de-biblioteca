@@ -3,6 +3,7 @@ package main.dao;
 import main.exceptions.dao.DAOExceptions;
 
 
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Map;
 
 public interface CRUD<T> {
 
-    public void create(T obj);
+    public void create(T obj) throws IOException, ClassNotFoundException;
 
     /**
      * Deleta um objeto
@@ -20,12 +21,12 @@ public interface CRUD<T> {
      * @param
      * @return
      */
-    public void delete(int ID) throws DAOExceptions;
+    public void delete(int ID) throws DAOExceptions, IOException, ClassNotFoundException;
 
     /**
      * Detela todos os dados
      */
-    public void deleteMany() throws DAOExceptions;
+    public void deleteMany() throws DAOExceptions, IOException, ClassNotFoundException;
 
     /**
      * Atualiza um objeto
@@ -33,7 +34,7 @@ public interface CRUD<T> {
      * @param obj
      * @return
      */
-    public void update(T obj, Integer number) throws DAOExceptions;
+    public void update(T obj, Integer number) throws DAOExceptions, IOException, ClassNotFoundException;
 
     /**
      * Ler toda a lista de dados

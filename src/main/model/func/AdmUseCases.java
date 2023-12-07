@@ -10,6 +10,7 @@ import main.model.Emprestimo;
 import main.model.Livro;
 import main.model.Usuario;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.Map.Entry;
@@ -20,18 +21,8 @@ import java.util.Map.Entry;
  */
 public class AdmUseCases {
 
-    /**
-     * objeto do dao do usuario
-     */
-    UsuarioDAO daoUsuario = DAO.getUsuarioDAO();
-    /**
-     * objeto do dao do livro
-     */
-    LivroDAO daoLivro = DAO.getLivroDAO();
-    /**
-     * objeto do dao do emprestimo
-     */
-    EmprestimoDAO daoEmprestimo = DAO.getEmprestimoDAO();
+    public AdmUseCases() throws IOException, ClassNotFoundException {
+    }
 
     /**
      * conta e retorna o numero de livros emprestados
@@ -43,7 +34,6 @@ public class AdmUseCases {
         Integer quant = 0;
 
         for (Entry<Integer,Emprestimo> x : daoEmprestimo.findMany().entrySet()){
-
             quant++;
         }
         return quant;
@@ -138,7 +128,7 @@ public class AdmUseCases {
      * @param daoUsuario objeto do dao do usuario
      * @throws DAOExceptions exececao do dao
      */
-    public void bloquearDesbloquearUsuario( Integer ID, Integer option,UsuarioDAO daoUsuario) throws DAOExceptions {
+    public void bloquearDesbloquearUsuario( Integer ID, Integer option,UsuarioDAO daoUsuario) throws DAOExceptions, IOException, ClassNotFoundException {
 
         //1 - bloquear
         //2 - desbloquear

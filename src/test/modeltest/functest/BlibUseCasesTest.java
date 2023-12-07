@@ -1,7 +1,11 @@
 package test.modeltest.functest;
 
+import main.dao.DAO;
+import main.dao.emprestimo.EmprestimoDAO;
 import main.dao.emprestimo.EmprestimoDAOmap;
+import main.dao.livro.LivroDAO;
 import main.dao.livro.LivroDAOmap;
+import main.dao.usuario.UsuarioDAO;
 import main.dao.usuario.UsuarioDAOmap;
 import main.exceptions.usecases.BlibUseCaseExceptions;
 import main.exceptions.dao.DAOExceptions;
@@ -17,18 +21,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BlibUseCasesTest {
 
-    LivroDAOmap livrodao = new LivroDAOmap();
-    UsuarioDAOmap usuariodao = new UsuarioDAOmap();
+    LivroDAO livrodao = DAO.getLivroDAO();  //SE DER MERDA VOLTAR PARA LIVRODAOMAP
+    UsuarioDAO usuariodao = DAO.getUsuarioDAO();
     BlibUseCases obj = new BlibUseCases();
-    EmprestimoDAOmap emprestimodao = new EmprestimoDAOmap();
+    EmprestimoDAO emprestimodao = DAO.getEmprestimoDAO();
     UsuarioUseCases objUsuarioUseCases = new UsuarioUseCases();
 
+    BlibUseCasesTest() throws IOException, ClassNotFoundException {
+    }
 
 
     public Emprestimo criandoEmprestimo(Integer idUsuario, Integer idlivro) throws DAOExceptions {
@@ -43,7 +50,7 @@ class BlibUseCasesTest {
     }
 
     @AfterEach
-    public void tearDown() throws DAOExceptions {
+    public void tearDown() throws DAOExceptions, IOException, ClassNotFoundException {
 
         livrodao.deleteMany();
         usuariodao.deleteMany();
@@ -51,7 +58,7 @@ class BlibUseCasesTest {
 
     }
 
-    public void criandoUserLivro(){
+    public void criandoUserLivro() throws IOException, ClassNotFoundException {
 
         Usuario user = new Usuario("gabriel", "undefined", "00000000");
         Livro livro = new Livro("teoria da relativida","albert einstein",null,2222,"fisica",null);
@@ -59,7 +66,7 @@ class BlibUseCasesTest {
         usuariodao.create(user);
     }
     @Test
-    void registroEmprestimo() throws DAOExceptions, BlibUseCaseExceptions, UsuarioUseCasesExceptions {
+    void registroEmprestimo() throws DAOExceptions, BlibUseCaseExceptions, UsuarioUseCasesExceptions, IOException, ClassNotFoundException {
 
 
         //******************TESTE DE EMPRESTIMO USUARIO SEM PENDENCIAS*****************************
@@ -224,7 +231,7 @@ class BlibUseCasesTest {
 
 
     @Test
-    void registroDevolucao() throws DAOExceptions, BlibUseCaseExceptions {
+    void registroDevolucao() throws DAOExceptions, BlibUseCaseExceptions, IOException, ClassNotFoundException {
 
         //DEVOLUCAO NORMAL
         criandoUserLivro();
@@ -252,7 +259,7 @@ class BlibUseCasesTest {
     }
  
     @Test
-    void atualizarMulta() throws DAOExceptions, BlibUseCaseExceptions {
+    void atualizarMulta() throws DAOExceptions, BlibUseCaseExceptions, IOException, ClassNotFoundException {
 
         criandoUserLivro();
         criandoUserLivro();//vou criar outro livro, para a excecao de livro indiponivel nao interferir nos testes
@@ -275,7 +282,7 @@ class BlibUseCasesTest {
     }
 
     @Test
-    void atualizarReserva() throws DAOExceptions, BlibUseCaseExceptions, UsuarioUseCasesExceptions {
+    void atualizarReserva() throws DAOExceptions, BlibUseCaseExceptions, UsuarioUseCasesExceptions, IOException, ClassNotFoundException {
 
         //TESTANDO USUARIO INDO PEGAR O LIVRO QUE RESERVOU FORA DO PRAZO
         criandoUserLivro();

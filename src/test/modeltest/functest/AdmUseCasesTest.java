@@ -1,7 +1,11 @@
 package test.modeltest.functest;
 
+import main.dao.DAO;
+import main.dao.emprestimo.EmprestimoDAO;
 import main.dao.emprestimo.EmprestimoDAOmap;
+import main.dao.livro.LivroDAO;
 import main.dao.livro.LivroDAOmap;
+import main.dao.usuario.UsuarioDAO;
 import main.dao.usuario.UsuarioDAOmap;
 import main.exceptions.dao.DAOExceptions;
 import main.exceptions.usecases.BlibUseCaseExceptions;
@@ -17,6 +21,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.nio.channels.AsynchronousServerSocketChannel;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,15 +30,40 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AdmUseCasesTest {
-
-    LivroDAOmap livrodao = new LivroDAOmap();
-    UsuarioDAOmap usuariodao = new UsuarioDAOmap();
+    /**
+     * objeto da classe LivroDAOmap
+     */
+    LivroDAO livrodao = DAO.getLivroDAO();
+    /**
+     * objeto da classe UsuarioDAOmap
+     */
+    UsuarioDAO usuariodao = DAO.getUsuarioDAO();
+    /**
+     * objeto da classe BiblibUseCases
+     */
     BlibUseCases obj = new BlibUseCases();
-    EmprestimoDAOmap emprestimodao = new EmprestimoDAOmap();
+    /**
+     * objeto da classe EmprestimoDAOmap
+     */
+    EmprestimoDAO emprestimodao = DAO.getEmprestimoDAO();
+    /**
+     * objeto da classe UsuarioUseCases
+     */
     UsuarioUseCases objUsuarioUseCases = new UsuarioUseCases();
+    /**
+     * objeto da classe AdmUseCases
+     */
     AdmUseCases objAdmUseCases = new AdmUseCases();
+
+    AdmUseCasesTest() throws IOException, ClassNotFoundException {
+    }
+
+    /**
+     * condicao inicial antes dos testes
+     */
     @BeforeEach
-    public void setUp(){
+    public void setUp() throws IOException, ClassNotFoundException, DAOExceptions {
+
 
         Livro livro1 = new Livro("Segredos do Universo", "Sarah Johnson", "Editora Imaginação", 1234, "Aventura", "Estante 1");
         Livro livro2 = new Livro("Aventuras nas Montanhas", "Lucas Silva", "Editora Imaginação", 5678, "Aventura", "Estante 2");
@@ -41,23 +71,29 @@ class AdmUseCasesTest {
         Livro livro4 = new Livro("A Magia da Poesia", "Ana Pereira", "Editora Versos Mágicos", 3456, "Poesia", "Estante 4");
         Livro livro5 = new Livro("O Segredo do Passado", "Pedro Almeida", "Editora Enigma", 7890, "Mistério", "Estante 5");
 
-        livrodao.create(livro1);
+        livrodao.create(livro1); //registrando livros para testes
         livrodao.create(livro2);
         livrodao.create(livro3);
         livrodao.create(livro4);
         livrodao.create(livro5);
 
     }
-
+    /**
+     * condicao para o final de cada teste
+     * @throws DAOExceptions excecoes do dao
+     */
     @AfterEach
-    public void tearDown() throws DAOExceptions {
+    public void tearDown() throws DAOExceptions, IOException, ClassNotFoundException {
 
-        livrodao.deleteMany();
+        livrodao.deleteMany(); //deletando os dados
         usuariodao.deleteMany();
         emprestimodao.deleteMany();
     }
 
-    public void criandoUserLivro(){
+    /**
+     * adicionando um usuario e livro no dao
+     */
+    public void criandoUserLivro() throws IOException, ClassNotFoundException {
 
         Usuario user = new Usuario("gabriel", "undefined", "00000000");
         Livro livro = new Livro("teoria da relativida","albert einstein",null,2222,"fisica",null);
@@ -65,6 +101,13 @@ class AdmUseCasesTest {
         usuariodao.create(user);
     }
 
+    /**
+     * criando um emprestimo
+     * @param idUsuario id do usuario
+     * @param idlivro id do livro
+     * @return objeto emprestimo
+     * @throws DAOExceptions excecoes do dao
+     */
     public Emprestimo criandoEmprestimo( Integer idUsuario, Integer idlivro) throws DAOExceptions {
 
 
@@ -76,8 +119,13 @@ class AdmUseCasesTest {
 
     }
 
+    /**
+     * testando a contagem de emprestimos ativos
+     * @throws DAOExceptions excecoes do dao
+     * @throws BlibUseCaseExceptions excecoes de BlibUseCaseExceptions
+     */
     @Test
-    void numeroLivrosEmprestados() throws DAOExceptions, BlibUseCaseExceptions {
+    void numeroLivrosEmprestados() throws DAOExceptions, BlibUseCaseExceptions, IOException, ClassNotFoundException {
 
         criandoUserLivro(); //adicionando 2 livros e 2 usuarios
         criandoUserLivro();
@@ -94,8 +142,13 @@ class AdmUseCasesTest {
 
     }
 
+    /**
+     * testando a contagem de livros atrasados
+     * @throws DAOExceptions excecoes do dao
+     * @throws BlibUseCaseExceptions excecoes de BlibUseCaseExceptions
+     */
     @Test
-    void qtdLivrosAtrasados() throws DAOExceptions, BlibUseCaseExceptions {
+    void qtdLivrosAtrasados() throws DAOExceptions, BlibUseCaseExceptions, IOException, ClassNotFoundException {
 
         criandoUserLivro(); //adicionando 2 livros e 2 usuarios
         criandoUserLivro();
@@ -111,8 +164,13 @@ class AdmUseCasesTest {
         Assertions.assertEquals(objAdmUseCases.qtdLivrosAtrasados(emprestimodao,dataLocal),2);//verificando se a contagem foi correta
     }
 
+    /**
+     * testando a selecao de livros mais populares
+     * @throws DAOExceptions excecoes do dao
+     * @throws BlibUseCaseExceptions excecoes de BlibUseCaseExceptions
+     */
     @Test
-    void livrosMaisPopulares() throws DAOExceptions, BlibUseCaseExceptions {
+    void livrosMaisPopulares() throws DAOExceptions, BlibUseCaseExceptions, IOException, ClassNotFoundException {
 
         criandoUserLivro(); //adicionando 2 livros e 2 usuarios
         criandoUserLivro();
@@ -132,8 +190,13 @@ class AdmUseCasesTest {
         //esses foram os unicos livros emprestados, logo sao os mais populares
     }
 
+    /**
+     * testando a contagem da quantidade de livros reservados
+     * @throws UsuarioUseCasesExceptions excecoes do UsuarioUseCasesExceptions
+     * @throws DAOExceptions excecoes do dao
+     */
     @Test
-    void qtdLivrosReservados() throws UsuarioUseCasesExceptions, DAOExceptions {
+    void qtdLivrosReservados() throws UsuarioUseCasesExceptions, DAOExceptions, IOException, ClassNotFoundException {
 
         criandoUserLivro(); //adicionando 2 livros e 2 usuarios
         criandoUserLivro();
@@ -146,8 +209,13 @@ class AdmUseCasesTest {
         Assertions.assertEquals(objAdmUseCases.qtdLivrosReservados(livrodao),2);
     }
 
+    /**
+     * testando a busca pelo hsitorico do usuario
+     * @throws DAOExceptions excecoes do dao
+     * @throws BlibUseCaseExceptions excecoes de BlibUseCaseExceptions
+     */
     @Test
-    void emprestimoUsuario() throws DAOExceptions, BlibUseCaseExceptions {
+    void emprestimoUsuario() throws DAOExceptions, BlibUseCaseExceptions, IOException, ClassNotFoundException {
 
         criandoUserLivro(); //adicionando 2 livros e 2 usuarios
         LocalDate dataLocal = LocalDate.of(2023,9,11); //definindo uma data do sistema aleatoria
@@ -158,8 +226,12 @@ class AdmUseCasesTest {
         Assertions.assertEquals(emprestimo,lista.get(0)); //verificando se o emprestimo é o mesmo que o emprestimo registrado no historico do usuario
     }
 
+    /**
+     * testando o bloqueio e desbloqueio do usuario
+     * @throws DAOExceptions excecoes do dao
+     */
     @Test
-    void bloquearDesbloquearUsuario() throws DAOExceptions {
+    void bloquearDesbloquearUsuario() throws DAOExceptions, IOException, ClassNotFoundException {
 
         criandoUserLivro(); //adicionando usuario
         Usuario usuario = usuariodao.findById(1);
