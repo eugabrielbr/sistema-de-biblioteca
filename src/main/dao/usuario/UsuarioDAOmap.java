@@ -83,6 +83,7 @@ public class UsuarioDAOmap implements UsuarioDAO{
         if (get != null) {
 
             Integer newId = get.getID();
+            usuario.setID(newId);
             usuarioMap.put(newId, usuario);
 
         }

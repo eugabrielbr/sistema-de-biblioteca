@@ -74,7 +74,7 @@ public class OperadoresDAOmap implements OperadoresDAO{
      * atualiza um operador por outro
      * @param operadores objeto operadores
      * @param ID id do operador que sera substituido
-     * @throws DAOExceptions
+     * @throws DAOExceptions excecoes do DAO
      */
     @Override
     public void update( Operadores operadores , Integer ID ) throws DAOExceptions {
@@ -84,6 +84,7 @@ public class OperadoresDAOmap implements OperadoresDAO{
         if (get != null) {
 
             Integer newId = get.getID();
+            operadores.setID(newId);
             operadoresMap.put(newId, operadores );
 
         }
@@ -107,7 +108,7 @@ public class OperadoresDAOmap implements OperadoresDAO{
      * busca e retorna o operador encontrado
      * @param id id do operador
      * @return operador buscado
-     * @throws DAOExceptions
+     * @throws DAOExceptions excecoes do DAO
      */
     @Override
     public Operadores findById( int id ) throws DAOExceptions {

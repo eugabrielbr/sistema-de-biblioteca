@@ -157,7 +157,7 @@ public class LivroDAOmap implements LivroDAO {
     }
 
     /**
-     * deleta dos os dados e zera o contador de id
+     * deleta todos os dados e zera o contador de id
      * @throws DAOExceptions excecoes do dao
      */
     @Override
@@ -182,6 +182,7 @@ public class LivroDAOmap implements LivroDAO {
         if (get != null) {
 
             Integer newId = get.getID();
+            livro.setID(newId);
             acervo.put(newId, livro);
 
         }

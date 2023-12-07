@@ -30,6 +30,7 @@ public class EmprestimoDAOmap implements EmprestimoDAO{
         this.ID = 0;
         this.emprestimoMap = new HashMap<>();
 
+
     }
 
     /**
@@ -61,7 +62,7 @@ public class EmprestimoDAOmap implements EmprestimoDAO{
     }
 
     /**
-     * deleta emprestimo e zera contador de id
+     * deleta todos os emprestimo e zera contador de id
      * @throws DAOExceptions exceções do DAO
      */
     @Override
@@ -85,8 +86,8 @@ public class EmprestimoDAOmap implements EmprestimoDAO{
 
         if (get != null) {
 
-            Integer newId = get.getIDemprestimo();
-            emprestimoMap.put(newId, emprestimo);
+            emprestimo.setIDemprestimo(ID);
+            emprestimoMap.put(ID, emprestimo);
 
         }
         else{
