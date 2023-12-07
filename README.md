@@ -10,6 +10,7 @@
 - Padrão de Projeto DAO (Data Access Object)
 - Padrão de Projeto Singleton
 - Diagrama de Classes
+- Arquivos em Java
 
 ### Diagrama de Classes
 
