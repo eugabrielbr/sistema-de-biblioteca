@@ -1,9 +1,12 @@
 package main.model;
+
+import java.io.Serializable;
+
 /**
  * Classe com atributos e metodos relacionados as pessoas
  * @author Gabriel
  */
-public class Pessoa {
+public class Pessoa implements Serializable {
     /**
      * nome da pessoa
      */

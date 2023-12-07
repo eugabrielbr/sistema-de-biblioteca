@@ -1,12 +1,13 @@
 package main.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
 /**
  * Classe com atributos e metodos relacionados aos livros
  * @author Gabriel
  */
-public class Livro {
+public class Livro implements Serializable {
 
     /**
      * titulo do livro

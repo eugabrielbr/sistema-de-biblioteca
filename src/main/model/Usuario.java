@@ -1,5 +1,6 @@
 package main.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.Objects;
  * Classe com atributos e metodos relacionados as usuario
  * @author Gabriel
  */
-public class Usuario extends Pessoa {
+public class Usuario extends Pessoa implements Serializable {
 
     /**
      * endereco do usuario

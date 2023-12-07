@@ -1,5 +1,6 @@
 package main.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -7,7 +8,7 @@ import java.util.Objects;
  * Classe com atributos e metodos relacionados aos emprestimos
  * @author Gabriel
  */
-public class Emprestimo {
+public class Emprestimo implements Serializable {
 
     /**
      * objeto do usuario

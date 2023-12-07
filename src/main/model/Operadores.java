@@ -1,10 +1,12 @@
 package main.model;
 
+import java.io.Serializable;
+
 /**
  * Classe com atributos e metodos relacionados aos operadores
  * @author Gabriel
  */
-public class Operadores extends Pessoa {
+public class Operadores extends Pessoa implements Serializable {
 
     /**
      * cargo dos operadores
