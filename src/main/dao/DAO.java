@@ -25,7 +25,7 @@ public class DAO {
     /**
      * tipo de memoria que sera usada para armazenamento de dados
      */
-    private static int typeOfStorage = 1;
+    private static int typeOfStorage = 2;
     //1 - MEMORIA
     //* - ARQUIVO
     /**
