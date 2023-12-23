@@ -1,12 +1,12 @@
-package test.daotest;
+package test.java.com.example.sistemadebiblioteca.daotest;
 
-import main.dao.DAO;
-import main.dao.SaveAndLoad;
-import main.dao.operadores.OperadoresDAO;
-import main.dao.operadores.OperadoresDAOmap;
-import main.exceptions.dao.DAOExceptions;
-import main.model.Livro;
-import main.model.Operadores;
+import main.java.com.example.sistemadebiblioteca.dao.DAO;
+import main.java.com.example.sistemadebiblioteca.dao.SaveAndLoad;
+import main.java.com.example.sistemadebiblioteca.dao.operadores.OperadoresDAO;
+import main.java.com.example.sistemadebiblioteca.dao.operadores.OperadoresDAOmap;
+import main.java.com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
+import main.java.com.example.sistemadebiblioteca.model.Livro;
+import main.java.com.example.sistemadebiblioteca.model.Operadores;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

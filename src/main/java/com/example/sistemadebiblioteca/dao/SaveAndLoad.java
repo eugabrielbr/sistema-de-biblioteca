@@ -1,21 +1,15 @@
-package main.dao;
+package main.java.com.example.sistemadebiblioteca.dao;
 
-
-import main.exceptions.dao.DAOExceptions;
-import main.model.Emprestimo;
-import main.model.Livro;
-import main.model.Usuario;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.io.*;
 
-import static main.dao.DAO.*;
-import static main.dao.DAO.getEmprestimoDAO;
+import static main.java.com.example.sistemadebiblioteca.dao.DAO.*;
+
 
 public class SaveAndLoad<T> {
 

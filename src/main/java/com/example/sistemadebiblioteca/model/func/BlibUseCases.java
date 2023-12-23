@@ -1,20 +1,19 @@
-package main.model.func;
+package main.java.com.example.sistemadebiblioteca.model.func;
 
-import main.dao.DAO;
-import main.dao.emprestimo.EmprestimoDAO;
-import main.dao.livro.LivroDAO;
-import main.dao.usuario.UsuarioDAO;
-import main.exceptions.usecases.BlibUseCaseExceptions;
-import main.exceptions.dao.DAOExceptions;
-import main.model.Emprestimo;
-import main.model.Livro;
-import main.model.Usuario;
+import main.java.com.example.sistemadebiblioteca.dao.livro.LivroDAO;
+import main.java.com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
+import main.java.com.example.sistemadebiblioteca.dao.emprestimo.EmprestimoDAO;
+import main.java.com.example.sistemadebiblioteca.model.Livro;
+import main.java.com.example.sistemadebiblioteca.model.Emprestimo;
+import main.java.com.example.sistemadebiblioteca.dao.usuario.UsuarioDAO;
+import main.java.com.example.sistemadebiblioteca.exceptions.usecases.BlibUseCaseExceptions;
+import main.java.com.example.sistemadebiblioteca.model.Usuario;
+
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-
 import java.util.List;
 
 /**
@@ -69,7 +68,7 @@ public class BlibUseCases {
      * @param daoEmprestimo objeto do dao do emprestimo
      * @return true ou false
      */
-    public boolean qtdEmprestimos(Integer usuario,EmprestimoDAO daoEmprestimo){
+    public boolean qtdEmprestimos( Integer usuario, EmprestimoDAO daoEmprestimo){
 
         List<Emprestimo> lista = daoEmprestimo.findByUser(usuario);
 

@@ -1,8 +1,8 @@
-package main.dao.livro;
+package main.java.com.example.sistemadebiblioteca.dao.livro;
 
-import main.dao.CRUD;
-import main.exceptions.dao.DAOExceptions;
-import main.model.Livro;
+import main.java.com.example.sistemadebiblioteca.dao.CRUD;
+import main.java.com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
+import main.java.com.example.sistemadebiblioteca.model.Livro;
 
 import java.util.List;
 

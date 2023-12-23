@@ -1,4 +1,4 @@
-package main.model;
+package main.java.com.example.sistemadebiblioteca.model;
 
 import java.io.Serializable;
 

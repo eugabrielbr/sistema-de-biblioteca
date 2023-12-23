@@ -1,10 +1,9 @@
 
+package main.java.com.example.sistemadebiblioteca.dao.emprestimo;
 
-package main.dao.emprestimo;
-
-import main.dao.CRUD;
-import main.exceptions.dao.DAOExceptions;
-import main.model.Emprestimo;
+import main.java.com.example.sistemadebiblioteca.dao.CRUD;
+import main.java.com.example.sistemadebiblioteca.model.Emprestimo;
+import main.java.com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public interface EmprestimoDAO extends CRUD<Emprestimo> {
      * @param IDuser ID do usuario
      * @return Lista<Emprestimo>
      */
-    List<Emprestimo> findByUser(Integer IDuser);
+    List<Emprestimo> findByUser( Integer IDuser);
 
     /**
      * busca um objeto

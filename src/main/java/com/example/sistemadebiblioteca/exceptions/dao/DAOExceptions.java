@@ -1,4 +1,4 @@
-package main.exceptions.dao;
+package main.java.com.example.sistemadebiblioteca.exceptions.dao;
 
 /**
  * excecoes personalizadas do DAO

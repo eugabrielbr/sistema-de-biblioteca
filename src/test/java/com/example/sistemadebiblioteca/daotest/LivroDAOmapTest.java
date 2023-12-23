@@ -1,11 +1,11 @@
-package test.daotest;
+package test.java.com.example.sistemadebiblioteca.daotest;
 
-import main.dao.DAO;
-import main.dao.livro.LivroDAO;
-import main.dao.livro.LivroDAOmap;
-import main.exceptions.dao.DAOExceptions;
-import main.model.Livro;
-import main.model.Usuario;
+import main.java.com.example.sistemadebiblioteca.dao.DAO;
+import main.java.com.example.sistemadebiblioteca.dao.livro.LivroDAO;
+import main.java.com.example.sistemadebiblioteca.dao.livro.LivroDAOmap;
+import main.java.com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
+import main.java.com.example.sistemadebiblioteca.model.Livro;
+import main.java.com.example.sistemadebiblioteca.model.Usuario;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
