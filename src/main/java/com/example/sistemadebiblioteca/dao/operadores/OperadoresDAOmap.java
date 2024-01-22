@@ -1,7 +1,7 @@
-package main.java.com.example.sistemadebiblioteca.dao.operadores;
+package com.example.sistemadebiblioteca.dao.operadores;
 
-import main.java.com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
-import main.java.com.example.sistemadebiblioteca.model.Operadores;
+import com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
+import com.example.sistemadebiblioteca.model.Operadores;
 
 
 import java.util.ArrayList;

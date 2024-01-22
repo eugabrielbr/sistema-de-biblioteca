@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PBLjava.iml" filepath="$PROJECT_DIR$/PBLjava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sistema-de-biblioteca.iml" filepath="$PROJECT_DIR$/sistema-de-biblioteca.iml" />
     </modules>
   </component>
 </project>

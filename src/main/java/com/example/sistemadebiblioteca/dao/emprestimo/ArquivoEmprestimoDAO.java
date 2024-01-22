@@ -1,15 +1,15 @@
-package main.java.com.example.sistemadebiblioteca.dao.emprestimo;
+package com.example.sistemadebiblioteca.dao.emprestimo;
 
 
-import main.java.com.example.sistemadebiblioteca.dao.SaveAndLoad;
+import com.example.sistemadebiblioteca.dao.SaveAndLoad;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import main.java.com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
-import main.java.com.example.sistemadebiblioteca.model.Emprestimo;
+import com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
+import com.example.sistemadebiblioteca.model.Emprestimo;
 import java.util.Map.Entry;
 
 public class ArquivoEmprestimoDAO implements EmprestimoDAO{

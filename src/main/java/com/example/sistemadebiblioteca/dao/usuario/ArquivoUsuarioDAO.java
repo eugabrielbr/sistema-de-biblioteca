@@ -1,8 +1,8 @@
-package main.java.com.example.sistemadebiblioteca.dao.usuario;
+package com.example.sistemadebiblioteca.dao.usuario;
 
-import main.java.com.example.sistemadebiblioteca.dao.SaveAndLoad;
-import main.java.com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
-import main.java.com.example.sistemadebiblioteca.model.Usuario;
+import com.example.sistemadebiblioteca.dao.SaveAndLoad;
+import com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
+import com.example.sistemadebiblioteca.model.Usuario;
 
 import java.io.IOException;
 import java.util.HashMap;

@@ -1,7 +1,7 @@
-package main.java.com.example.sistemadebiblioteca.dao.livro;
+package com.example.sistemadebiblioteca.dao.livro;
 
-import main.java.com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
-import main.java.com.example.sistemadebiblioteca.model.Livro;
+import com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
+import com.example.sistemadebiblioteca.model.Livro;
 
 import java.util.*;
 import java.util.Map.Entry;

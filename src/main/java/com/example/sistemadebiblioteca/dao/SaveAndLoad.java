@@ -1,4 +1,4 @@
-package main.java.com.example.sistemadebiblioteca.dao;
+package com.example.sistemadebiblioteca.dao;
 
 
 import java.nio.file.Files;
@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.io.*;
 
-import static main.java.com.example.sistemadebiblioteca.dao.DAO.*;
+import static com.example.sistemadebiblioteca.dao.DAO.*;
 
 
 public class SaveAndLoad<T> {

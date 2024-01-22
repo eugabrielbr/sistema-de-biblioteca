@@ -1,7 +1,7 @@
-package main.java.com.example.sistemadebiblioteca.dao.emprestimo;
+package com.example.sistemadebiblioteca.dao.emprestimo;
 
-import main.java.com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
-import main.java.com.example.sistemadebiblioteca.model.Emprestimo;
+import com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
+import com.example.sistemadebiblioteca.model.Emprestimo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,7 +1,7 @@
-package main.java.com.example.sistemadebiblioteca.dao.usuario;
+package com.example.sistemadebiblioteca.dao.usuario;
 
-import main.java.com.example.sistemadebiblioteca.dao.CRUD;
-import main.java.com.example.sistemadebiblioteca.model.Usuario;
+import com.example.sistemadebiblioteca.dao.CRUD;
+import com.example.sistemadebiblioteca.model.Usuario;
 
 /**
  * inteface UsuarioDAO

@@ -1,4 +1,4 @@
-package main.java.com.example.sistemadebiblioteca.exceptions.usecases;
+package com.example.sistemadebiblioteca.exceptions.usecases;
 
 /**
  * excecoes personalizadas para a Classe BibliUseCases

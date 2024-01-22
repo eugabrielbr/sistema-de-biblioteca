@@ -1,6 +1,6 @@
-package main.java.com.example.sistemadebiblioteca.dao;
+package com.example.sistemadebiblioteca.dao;
 
-import main.java.com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
+import com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
 
 
 import java.io.IOException;

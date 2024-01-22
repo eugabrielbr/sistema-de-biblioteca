@@ -1,19 +1,19 @@
-package main.java.com.example.sistemadebiblioteca.dao;
+package com.example.sistemadebiblioteca.dao;
 
 
 
-import main.java.com.example.sistemadebiblioteca.dao.livro.ArquivoLivroDAO;
-import main.java.com.example.sistemadebiblioteca.dao.livro.LivroDAO;
-import main.java.com.example.sistemadebiblioteca.dao.livro.LivroDAOmap;
-import main.java.com.example.sistemadebiblioteca.dao.operadores.ArquivoOperadoresDAO;
-import main.java.com.example.sistemadebiblioteca.dao.operadores.OperadoresDAO;
-import main.java.com.example.sistemadebiblioteca.dao.operadores.OperadoresDAOmap;
-import main.java.com.example.sistemadebiblioteca.dao.usuario.ArquivoUsuarioDAO;
-import main.java.com.example.sistemadebiblioteca.dao.usuario.UsuarioDAO;
-import main.java.com.example.sistemadebiblioteca.dao.usuario.UsuarioDAOmap;
-import main.java.com.example.sistemadebiblioteca.dao.emprestimo.ArquivoEmprestimoDAO;
-import main.java.com.example.sistemadebiblioteca.dao.emprestimo.EmprestimoDAO;
-import main.java.com.example.sistemadebiblioteca.dao.emprestimo.EmprestimoDAOmap;
+import com.example.sistemadebiblioteca.dao.livro.ArquivoLivroDAO;
+import com.example.sistemadebiblioteca.dao.livro.LivroDAO;
+import com.example.sistemadebiblioteca.dao.livro.LivroDAOmap;
+import com.example.sistemadebiblioteca.dao.operadores.ArquivoOperadoresDAO;
+import com.example.sistemadebiblioteca.dao.operadores.OperadoresDAO;
+import com.example.sistemadebiblioteca.dao.operadores.OperadoresDAOmap;
+import com.example.sistemadebiblioteca.dao.usuario.ArquivoUsuarioDAO;
+import com.example.sistemadebiblioteca.dao.usuario.UsuarioDAO;
+import com.example.sistemadebiblioteca.dao.usuario.UsuarioDAOmap;
+import com.example.sistemadebiblioteca.dao.emprestimo.ArquivoEmprestimoDAO;
+import com.example.sistemadebiblioteca.dao.emprestimo.EmprestimoDAO;
+import com.example.sistemadebiblioteca.dao.emprestimo.EmprestimoDAOmap;
 
 import java.io.IOException;
 

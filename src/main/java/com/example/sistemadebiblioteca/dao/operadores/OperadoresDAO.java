@@ -1,7 +1,7 @@
-package main.java.com.example.sistemadebiblioteca.dao.operadores;
+package com.example.sistemadebiblioteca.dao.operadores;
 
-import main.java.com.example.sistemadebiblioteca.dao.CRUD;
-import main.java.com.example.sistemadebiblioteca.model.Operadores;
+import com.example.sistemadebiblioteca.dao.CRUD;
+import com.example.sistemadebiblioteca.model.Operadores;
 
 import java.util.List;
 
