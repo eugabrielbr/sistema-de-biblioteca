@@ -2,6 +2,8 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 
 ### Eclipse ###
@@ -30,3 +32,5 @@ bin/
 .DS_Store
 
 ### extras ###
+
+
