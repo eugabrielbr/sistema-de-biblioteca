@@ -31,21 +31,23 @@ public class HelloController {
 
     @FXML
     void botaoAdmAction(ActionEvent event) {
-        HelloApplication.changeScene("login");
         isAdm = true;
+        HelloApplication.changeScene("login");
 
     }
 
     @FXML
     void botaoBibAction(ActionEvent event) {
-        HelloApplication.changeScene("login");
         isBib = true;
+        HelloApplication.changeScene("login");
+
     }
 
     @FXML
     void botaoLeitorAction(ActionEvent event) {
-        HelloApplication.changeScene("login");
         isLei = true;
+        HelloApplication.changeScene("login");
+
     }
 
     @FXML

@@ -12,22 +12,27 @@ import java.net.URL;
 public class HelloApplication extends Application {
 
     private static Stage stage;
+    private static Stage stageInfoLivro;
     private static Scene sceneHello;
     private static Scene sceneLogin;
+    private static Scene sceneRegistro;
     @Override
     public void start( Stage primaryStage ) throws IOException {
 
         stage = primaryStage;
+        stageInfoLivro = new Stage();
 
         Parent fxmlHello = new FXMLLoader().load(getClass().getResource("view/hello-view.fxml"));
         Parent fxmlLogin = new FXMLLoader().load(getClass().getResource("view/login-view.fxml"));
+        Parent fxmlRegistro = new FXMLLoader().load(getClass().getResource("view/registro-view.fxml"));
 
-        sceneHello = new Scene(fxmlHello,640,400);
-        sceneLogin = new Scene(fxmlLogin,640,400);
+        sceneHello = new Scene(fxmlHello,640,480);
+        sceneLogin = new Scene(fxmlLogin,640,480);
+        sceneRegistro = new Scene(fxmlRegistro,640,480);
 
-        primaryStage.setScene(sceneHello);
+        stage.setScene(sceneHello);
 
-        primaryStage.show();
+        stage.show();
 
     }
 
@@ -39,6 +44,16 @@ public class HelloApplication extends Application {
             case "login":
                 stage.setScene(sceneLogin);
                 break;
+            case "registro":
+                stage.setScene(sceneRegistro);
+                break;
+            case "stageInfoLivro":
+                stage = stageInfoLivro;
+                stage.setScene(sceneHello);
+                stage.show();
+                break;
+
+
         }
     }
 
