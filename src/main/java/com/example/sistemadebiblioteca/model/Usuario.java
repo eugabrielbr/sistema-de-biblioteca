@@ -28,6 +28,8 @@ public class Usuario extends Pessoa implements Serializable {
      * quantidade de emprestimos do usuario
      */
     private int qtdEmprestimos;
+
+    private String senha;
     /**
      * data limite de multa do usuario
      */
@@ -65,12 +67,13 @@ public class Usuario extends Pessoa implements Serializable {
      * @param endereco endereco do usuario
      * @param telefone telefone do usuario
      */
-    public Usuario(String name, String endereco, String telefone) {
+    public Usuario(String name, String endereco, String telefone, String senha) {
         super(name);
         this.endereco = endereco;
         this.telefone = telefone;
         this.livrosDevolvidos = new ArrayList<>();
         this.historico = new ArrayList<>();
+        this.senha = senha;
 
 
     }
@@ -113,6 +116,10 @@ public class Usuario extends Pessoa implements Serializable {
      */
     public String getTelefone() {
         return telefone;
+    }
+    public String getSenha(){return senha;}
+    public void setSenha(String senha){
+        this.senha = senha;
     }
 
     /**
@@ -178,7 +185,8 @@ public class Usuario extends Pessoa implements Serializable {
     @Override
     public String toString() {
         return "Usuario{" +
-                "endereco='" + endereco + '\'' +
+                "nome= " + getName() +
+                ", endereco='" + endereco + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", bloqueio=" + bloqueio +
                 ", qtdEmprestimos=" + qtdEmprestimos +

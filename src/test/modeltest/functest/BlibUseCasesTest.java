@@ -60,7 +60,7 @@ class BlibUseCasesTest {
 
     public void criandoUserLivro() throws IOException, ClassNotFoundException {
 
-        Usuario user = new Usuario("gabriel", "undefined", "00000000");
+        Usuario user = new Usuario("gabriel", "undefined", "00000000","teste");
         Livro livro = new Livro("teoria da relativida","albert einstein",null,2222,"fisica",null);
         livrodao.create(livro);
         usuariodao.create(user);

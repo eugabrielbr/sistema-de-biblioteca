@@ -26,7 +26,7 @@ class UsuarioDAOmapTest {
     @BeforeEach
     public void setUp() throws IOException, ClassNotFoundException {
 
-        Usuario objUsuario = new Usuario("gabriel", "undefined", "00000000");
+        Usuario objUsuario = new Usuario("gabriel", "undefined", "00000000","teste");
         obj.create(objUsuario);
 
 
@@ -46,7 +46,7 @@ class UsuarioDAOmapTest {
     @Test
     void create() throws DAOExceptions, IOException, ClassNotFoundException {
 
-        Usuario usuario = new Usuario("gabriel", "undefined", "00000000");
+        Usuario usuario = new Usuario("gabriel", "undefined", "00000000","teste");
         obj.create(usuario);
 
         Assertions.assertEquals(usuario,obj.findById(2)); //testando se o mesmo objeto foi registrado
@@ -86,7 +86,7 @@ class UsuarioDAOmapTest {
     void update() throws DAOExceptions, IOException, ClassNotFoundException {
 
 
-        Usuario objUsuario = new Usuario("gabri", "undefined", "00000000");
+        Usuario objUsuario = new Usuario("gabri", "undefined", "00000000","teste");
         obj.update(objUsuario,1);
 
         Assertions.assertEquals(objUsuario,obj.findById(1));

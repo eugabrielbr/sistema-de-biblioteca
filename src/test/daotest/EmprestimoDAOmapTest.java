@@ -34,7 +34,7 @@ class EmprestimoDAOmapTest {
     @BeforeEach
     public void setUp() throws IOException, ClassNotFoundException, DAOExceptions {
 
-        Usuario user = new Usuario("Gabriel","Rua das flores","87654327");
+        Usuario user = new Usuario("Gabriel","Rua das flores","87654327","teste");
         Livro livro = new Livro("Segredos do Universo", "Sarah Johnson", "Editora Imaginação", 1234, "Aventura", "Estante 1");
         LocalDate data1 = LocalDate.of(2023,9,11);
         Emprestimo emprestimo = new Emprestimo(user,data1,livro);
@@ -58,7 +58,7 @@ class EmprestimoDAOmapTest {
     @Test
     void create() throws DAOExceptions, IOException, ClassNotFoundException {
 
-        Usuario user = new Usuario("Gabriel","Rua das flores","87654327");
+        Usuario user = new Usuario("Gabriel","Rua das flores","87654327","teste");
         Livro livro = new Livro("Segredos do Universo", "Sarah Johnson", "Editora Imaginação", 1234, "Aventura", "Estante 1");
         LocalDate data1 = LocalDate.of(2023,9,11);
         Emprestimo emprestimo = new Emprestimo(user,data1,livro);
@@ -101,7 +101,7 @@ class EmprestimoDAOmapTest {
     @Test
     void update() throws DAOExceptions, IOException, ClassNotFoundException {
 
-        Usuario user = new Usuario("Gabriel","Rua do fogo","87654327");
+        Usuario user = new Usuario("Gabriel","Rua do fogo","87654327","teste");
         Livro livro = new Livro("Segredos do Universo", "Sarah Jackson", "Editora Imaginario", 4321, "Aventura", "Estante 1");
         LocalDate data1 = LocalDate.of(2023,9,11);
         Emprestimo emprestimo = new Emprestimo(user,data1,livro);
