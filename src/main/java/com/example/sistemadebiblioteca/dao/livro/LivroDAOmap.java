@@ -131,11 +131,12 @@ public class LivroDAOmap implements LivroDAO {
      * @param livro objeto livro
      */
     @Override
-    public void create(Livro livro){
+    public Integer create(Livro livro){
 
         ID++;
         livro.setID(ID);
         acervo.put(ID,livro);
+        return ID;
 
     }
 

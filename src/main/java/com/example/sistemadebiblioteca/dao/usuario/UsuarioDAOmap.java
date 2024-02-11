@@ -33,11 +33,12 @@ public class UsuarioDAOmap implements UsuarioDAO{
      * @param usuario objeto usuario
      */
     @Override
-    public void create( Usuario usuario ){
+    public Integer create( Usuario usuario ){
 
         ID++;
         usuario.setID(ID);
         usuarioMap.put(ID,usuario);
+        return ID;
 
 
     }

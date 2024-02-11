@@ -37,12 +37,12 @@ public class EmprestimoDAOmap implements EmprestimoDAO{
      * @param emprestimo objeto emprestimo
      */
     @Override
-    public void create( Emprestimo emprestimo ) {
+    public Integer create( Emprestimo emprestimo ) {
 
         ID++;
         emprestimo.setIDemprestimo(ID);
         emprestimoMap.put(ID,emprestimo);
-
+        return ID;
     }
 
     /**

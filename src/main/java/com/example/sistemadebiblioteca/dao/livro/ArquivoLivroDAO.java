@@ -56,12 +56,13 @@ public class ArquivoLivroDAO implements LivroDAO{
      * @throws ClassNotFoundException excecoes de classes nao encontradas
      */
     @Override
-    public void create( Livro livro) throws IOException, ClassNotFoundException {
+    public Integer create( Livro livro) throws IOException, ClassNotFoundException {
 
         ID++;
         livro.setID(ID);
         acervo.put(ID,livro);
         save.salvar(2);
+        return ID;
     }
     /**
      * deleta livro

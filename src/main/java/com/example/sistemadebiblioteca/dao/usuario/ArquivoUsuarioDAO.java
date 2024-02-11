@@ -55,11 +55,12 @@ public class ArquivoUsuarioDAO implements UsuarioDAO{
      * @throws ClassNotFoundException excecoes de classes nao encontradas
      */
     @Override
-    public void create( Usuario usuario ) throws IOException, ClassNotFoundException {
+    public Integer create( Usuario usuario ) throws IOException, ClassNotFoundException {
         ID++;
         usuario.setID(ID);
         usuarioMap.put(ID,usuario);
         save.salvar(3);
+        return ID;
     }
     /**
      * deleta usuarios

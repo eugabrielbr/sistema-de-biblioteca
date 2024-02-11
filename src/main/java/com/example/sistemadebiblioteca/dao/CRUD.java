@@ -13,7 +13,7 @@ import java.util.Map;
 
 public interface CRUD<T> {
 
-    public void create(T obj) throws IOException, ClassNotFoundException;
+    public Integer create(T obj) throws IOException, ClassNotFoundException;
 
     /**
      * Deleta um objeto

@@ -59,11 +59,12 @@ public class ArquivoOperadoresDAO implements OperadoresDAO{
      * @throws ClassNotFoundException excecoes de classes nao encontradas
      */
     @Override
-    public void create( Operadores operadores ) throws IOException, ClassNotFoundException {
+    public Integer create( Operadores operadores ) throws IOException, ClassNotFoundException {
         ID++;
         operadores.setID(ID);
         operadoresMap.put(ID,operadores);
         save.salvar(4);
+        return ID;
     }
     /**
      * deleta operadores

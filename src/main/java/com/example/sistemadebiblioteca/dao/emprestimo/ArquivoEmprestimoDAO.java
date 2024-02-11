@@ -62,12 +62,13 @@ public class ArquivoEmprestimoDAO implements EmprestimoDAO{
      * @throws ClassNotFoundException excecoes de classes nao encontradas
      */
     @Override
-    public void create( Emprestimo emprestimo ) throws IOException, ClassNotFoundException {
+    public Integer create( Emprestimo emprestimo ) throws IOException, ClassNotFoundException {
 
         ID++;
         emprestimo.setIDemprestimo(ID);
         emprestimoMap.put(ID,emprestimo);
         save.salvar(1);
+        return ID;
 
     }
     /**

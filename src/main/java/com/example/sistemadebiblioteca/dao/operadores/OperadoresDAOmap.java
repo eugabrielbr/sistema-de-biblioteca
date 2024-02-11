@@ -37,11 +37,12 @@ public class OperadoresDAOmap implements OperadoresDAO{
      * @param operadores objeto operadores
      */
     @Override
-    public void create( Operadores operadores) {
+    public Integer create( Operadores operadores) {
         
         ID++;
         operadores.setID(ID);
         operadoresMap.put(ID,operadores);
+        return ID;
     }
 
     /**

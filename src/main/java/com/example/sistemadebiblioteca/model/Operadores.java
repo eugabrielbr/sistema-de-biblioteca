@@ -17,6 +17,7 @@ public class Operadores extends Pessoa implements Serializable {
      */
     private String senha;
 
+
     /**
      * construtor da classe Operadores
      * @param name nome do operador
