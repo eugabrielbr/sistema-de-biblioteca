@@ -102,7 +102,7 @@ public class BlibUseCases {
 
         if (qtdEmprestimosAtivos) {
             //System.out.println("if 1");
-            if (emprestimo.getLivro().primeiroFila() == emprestimo.getUsuario().getID() || emprestimo.getLivro().primeiroFila() == null) {
+            if ((emprestimo.getLivro().primeiroFila() == null || emprestimo.getLivro().primeiroFila().equals(emprestimo.getUsuario().getID())) || emprestimo.getLivro().primeiroFila() == null) {
                 //System.out.println("if 2");
                 if (emprestimo.getLivro().getDisponibilidade() && !emprestimo.getUsuario().getBloqueio()) {
                     //System.out.println("if 3");

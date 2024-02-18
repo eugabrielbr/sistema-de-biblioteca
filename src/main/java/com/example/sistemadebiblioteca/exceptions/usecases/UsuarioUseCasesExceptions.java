@@ -12,7 +12,7 @@ public class UsuarioUseCasesExceptions extends Exception{
     /**
      * mensagem para excecao erro
      */
-    public static final String ERRO  = "Nao e possivel efetuar a renovacao";
+    public static final String ERRO  = "Não e possivel efetuar a renovação";
     /**
      * mensagem para excecao erro_reserva
      */

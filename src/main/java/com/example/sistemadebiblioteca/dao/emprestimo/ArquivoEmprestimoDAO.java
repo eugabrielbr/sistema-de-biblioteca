@@ -163,7 +163,7 @@ public class ArquivoEmprestimoDAO implements EmprestimoDAO{
 
         for (Entry<Integer,Emprestimo> x : emprestimoMap.entrySet()){
 
-            if (x.getValue().getUsuario().getID() == IDuser){
+            if (x.getValue().getUsuario().getID().equals(IDuser)){
                 listaEmprestimo.add(x.getValue());
             }
 
@@ -185,7 +185,7 @@ public class ArquivoEmprestimoDAO implements EmprestimoDAO{
 
         for (Entry<Integer,Emprestimo> x : emprestimoMap.entrySet()){
 
-            if (x.getValue().getUsuario().getID() == IDusuario && x.getValue().getLivro().getID() == IDlivro){
+            if (x.getValue().getUsuario().getID().equals(IDusuario)  && x.getValue().getLivro().getID().equals(IDlivro)){
 
                 emprestimo = x.getValue();
                 return emprestimo;

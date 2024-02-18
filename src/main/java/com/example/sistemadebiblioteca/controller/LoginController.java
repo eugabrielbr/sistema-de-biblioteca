@@ -30,8 +30,6 @@ public class LoginController {
     @FXML
     private Button botaoVoltar;
 
-    @FXML
-    private Hyperlink hyperLinkRegistrar;
 
     @FXML
     private TextField loginTexto;
@@ -45,16 +43,15 @@ public class LoginController {
     private UsuarioDAO usuarioDAO;
     private OperadoresDAO operadoresDAO;
 
-    public Operadores operador;
+    public static Operadores operador;
 
-    public Usuario usuario;
+    public static Usuario usuario;
 
 
     public LoginController() throws IOException, ClassNotFoundException {
 
         this.usuarioDAO = DAO.getUsuarioDAO();
         this.operadoresDAO = DAO.getOperadoresDAO();
-
 
     }
 
@@ -63,6 +60,7 @@ public class LoginController {
     void botaoLoginAction(ActionEvent event) throws IOException, ClassNotFoundException, DAOExceptions {
 
         this.labelErro.setText("");
+
 
         try {
 
@@ -73,13 +71,20 @@ public class LoginController {
 
                 if (operadorEncontrado.getSenha().equals(this.senhaText.getText())){
 
-                    this.operador = operadorEncontrado;
+                    operador = operadorEncontrado;
 
-                    if (operadorEncontrado.getCargo() == 1){
-                        //cena adm
+                    if (operadorEncontrado.getCargo().equals(1) && HelloController.isAdm){
+                        clear();
+                        HelloApplication.changeScene("administrador");
                     }
-                    else if(operadorEncontrado.getCargo() == 2){}
-                        //cena blib
+                    else if(operadorEncontrado.getCargo().equals(2) && HelloController.isBib){
+                        clear();
+                        HelloApplication.changeScene("bibliotecario");
+                    }
+                    else{
+                        this.labelErro.setText("Usuário não encontrado!");
+                    }
+
                 }
                 else{
                     this.labelErro.setText("Senha incorreta!");
@@ -91,9 +96,9 @@ public class LoginController {
 
                 if (usuarioEncontrado.getSenha().equals(this.senhaText.getText())){
 
-                    this.usuario = usuarioEncontrado;
-                    //aq onde passa cena
-                    System.out.println(usuarioEncontrado);
+                    usuario = usuarioEncontrado;
+                    HelloApplication.changeScene("usuario");
+                    clear();
                 }
                 else{
                     this.labelErro.setText("Senha incorreta!");
@@ -124,16 +129,6 @@ public class LoginController {
         HelloApplication.changeScene("hello");
     }
 
-    @FXML
-    void hyperLinkRegistrarAction(ActionEvent event) {
-
-        clear();
-
-        HelloApplication.changeScene("registro");
-
-
-
-    }
 
     @FXML
     void loginTextoAction(ActionEvent event) {
@@ -149,7 +144,6 @@ public class LoginController {
     void initialize() {
         assert botaoLogin != null : "fx:id=\"botaoLogin\" was not injected: check your FXML file 'login-view.fxml'.";
         assert botaoVoltar != null : "fx:id=\"botaoVoltar\" was not injected: check your FXML file 'login-view.fxml'.";
-        assert hyperLinkRegistrar != null : "fx:id=\"hyperLinkRegistrar\" was not injected: check your FXML file 'login-view.fxml'.";
         assert labelErro != null : "fx:id=\"labelErro\" was not injected: check your FXML file 'login-view.fxml'.";
         assert loginTexto != null : "fx:id=\"loginTexto\" was not injected: check your FXML file 'login-view.fxml'.";
         assert senhaText != null : "fx:id=\"senhaText\" was not injected: check your FXML file 'login-view.fxml'.";

@@ -55,7 +55,9 @@ public class RegistroController {
     @FXML
     void botaoCadastroAction(ActionEvent event) throws IOException, ClassNotFoundException {
 
+
         alertText.setText("");
+        erroRegistro.setText("");
 
 
         String name = nomeText.getText();
@@ -71,7 +73,9 @@ public class RegistroController {
                 Usuario usuario = new Usuario(name, endereco, telefone, senha);
                 try {
                     Integer id = DAO.getUsuarioDAO().create(usuario);
-                    erroRegistro.setText("Registro efetuado! Seu LOGIN DE ACESSO É: " + id);
+                    erroRegistro.setText("Registro efetuado! LOGIN DE ACESSO: " + id);
+                    clear();
+
                 } catch (Exception e) {
                     erroRegistro.setText("Erro ao cadastrar. Tente novamente!");
                     System.out.println(e);
@@ -87,28 +91,28 @@ public class RegistroController {
 
             alertText.setText("Senha inválida! Máximo de 8 caracteres.");
             senhaRegistroText.clear();
+            erroRegistro.setText("");
 
         }
 
 
         }
 
-
-    @FXML
-    void botaoVoltarAction(ActionEvent event) {
-
+    public void clear(){
         nomeText.clear();
         enderecoText.clear();
         teltext.clear();
         senhaRegistroText.clear();
+    }
+    @FXML
+    void botaoVoltarAction(ActionEvent event) {
+
+        clear();
 
         alertText.setText("");
         erroRegistro.setText("");
 
-        HelloController.isAdm = false;
-        HelloController.isLei = false;
-        HelloController.isBib = false;
-        HelloApplication.changeScene("hello");
+        //mudar cena
     }
 
     @FXML

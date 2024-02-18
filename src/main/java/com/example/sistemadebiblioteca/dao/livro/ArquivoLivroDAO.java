@@ -58,11 +58,11 @@ public class ArquivoLivroDAO implements LivroDAO{
     @Override
     public Integer create( Livro livro) throws IOException, ClassNotFoundException {
 
-        ID++;
-        livro.setID(ID);
-        acervo.put(ID,livro);
+        this.ID++;
+        livro.setID(this.ID);
+        acervo.put(this.ID,livro);
         save.salvar(2);
-        return ID;
+        return this.ID;
     }
     /**
      * deleta livro

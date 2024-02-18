@@ -165,7 +165,7 @@ class AdmUseCasesTest {
     }
 
     /**
-     * testando a selecao de livros mais populares
+     * testando a RegistrarLivroController de livros mais populares
      * @throws DAOExceptions excecoes do dao
      * @throws BlibUseCaseExceptions excecoes de BlibUseCaseExceptions
      */

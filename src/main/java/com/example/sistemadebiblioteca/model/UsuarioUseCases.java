@@ -1,5 +1,6 @@
 package com.example.sistemadebiblioteca.model;
 
+import com.example.sistemadebiblioteca.dao.DAO;
 import com.example.sistemadebiblioteca.dao.emprestimo.EmprestimoDAO;
 import com.example.sistemadebiblioteca.dao.livro.LivroDAO;
 import com.example.sistemadebiblioteca.dao.usuario.UsuarioDAO;
@@ -38,16 +39,28 @@ public class UsuarioUseCases {
         BlibUseCases obj = new BlibUseCases();
         Usuario usuario = daoUsuario.findById(IDusuario);
         boolean verificacao = false;
+        boolean vericacaoEmprestimo = true;
+
+        try{
+            Emprestimo emprestimo = DAO.getEmprestimoDAO().findByIDlivroIDusuario(livro.getID(), usuario.getID());
+
+        }
+        catch (Exception e){
+            vericacaoEmprestimo = false;
+        }
+
 
         for(Integer x: livro.getFilaReserva()){
 
-            if(x == usuario.getID()){
+            if(x.equals(usuario.getID())){
+
                 verificacao = true;
+
             }
         }
 
 
-        if (!usuario.getBloqueio() && !verificacao && (usuario.getDataDaMulta() == null || usuario.getDataDaMulta().isBefore(dataLocal))) {
+        if (!usuario.getBloqueio() && !verificacao && (usuario.getDataDaMulta() == null || usuario.getDataDaMulta().isBefore(dataLocal)) && !vericacaoEmprestimo) {
             livro.adicionarReserva(IDusuario);
             obj.atualizarReserva(IDlivro,daoLivro,dataLocal);
         }

@@ -40,17 +40,17 @@
          <children>
             <Button id="botaoLeitor" fx:id="botaoLeitor" mnemonicParsing="false" onAction="#botaoLeitorAction" prefHeight="40.0" prefWidth="100.0" text="Leitor">
                <font>
-                  <Font name="Arial Black" size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Button>
             <Button id="botaoAdm" fx:id="botaoAdm" mnemonicParsing="false" onAction="#botaoAdmAction" prefHeight="40.0" prefWidth="100.0" text="Administrador">
                <font>
-                  <Font name="Arial Black" size="11.0" />
+                  <Font name="System Bold" size="11.0" />
                </font>
             </Button>
             <Button id="botaoBib" fx:id="botaoBib" mnemonicParsing="false" onAction="#botaoBibAction" prefHeight="40.0" prefWidth="100.0" text="Bibliotecário">
                <font>
-                  <Font name="Arial Black" size="12.0" />
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Button>
          </children>

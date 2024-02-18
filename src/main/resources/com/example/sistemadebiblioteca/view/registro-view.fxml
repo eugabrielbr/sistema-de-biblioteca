@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="com.example.sistemadebiblioteca.controller.RegistroController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadebiblioteca.controller.RegistroController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -22,12 +22,12 @@
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #a8ed89;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Faça seu cadastro abaixo:" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Cadastro" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="Haettenschweiler" size="46.0" />
                </font>
             </Label>
-            <Label alignment="BOTTOM_CENTER" text="Somente para leitor" textFill="#757575">
+            <Label alignment="BOTTOM_CENTER" text="Leitor" textFill="#757575">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -104,7 +104,7 @@
                   <Insets top="14.0" />
                </VBox.margin>
             </Button>
-            <Button id="botaoVoltar" fx:id="botaoVoltar" mnemonicParsing="false" onAction="#botaoVoltarAction" text="Voltar">
+            <Button id="botaoVoltar" fx:id="botaoVoltar" mnemonicParsing="false" onAction="#botaoVoltarAction" text="Voltar" translateX="-13.0">
                <VBox.margin>
                   <Insets right="550.0" />
                </VBox.margin>
@@ -113,10 +113,13 @@
                <VBox.margin>
                   <Insets bottom="40.0" top="-10.0" />
                </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Label>
          </children>
          <padding>
-            <Insets top="20.0" />
+            <Insets top="70.0" />
          </padding>
       </VBox>
    </children>
