@@ -52,7 +52,7 @@
                <font>
                   <Font name="System Bold" size="11.0" />
                </font></Button>
-            <Button fx:id="gerenOperadores" minHeight="60.0" mnemonicParsing="false" onAction="#gerenOperadores" prefWidth="100.0" text="Registrar usuário" translateX="40.0" translateY="100.0">
+            <Button fx:id="gerenOperadores" minHeight="60.0" mnemonicParsing="false" onAction="#gerenOperadores" prefWidth="100.0" text="Reg. operadores" translateX="40.0" translateY="100.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
