@@ -30,6 +30,11 @@ public class HelloApplication extends Application {
     private static Scene sceneRelatorio;
     private static Scene sceneGerenUsu;
     private static Scene sceneHistoricoUsu;
+    private static Scene sceneBloquear;
+    private static Scene sceneGerenAcervo;
+    private static Scene sceneDeletarLivro;
+    private static Scene sceneAttLivro;
+    private static Scene sceneCadastroAdm;
     @Override
     public void start( Stage primaryStage ) throws IOException {
 
@@ -50,6 +55,11 @@ public class HelloApplication extends Application {
         Parent fxmlRelatorio= new FXMLLoader().load(getClass().getResource("view/relatorio-view.fxml"));
         Parent fxmlGerenUsu = new FXMLLoader().load(getClass().getResource("view/gerenUsu-view.fxml"));
         Parent fxmlHistoricoUsu = new FXMLLoader().load(getClass().getResource("view/historicoUser-view.fxml"));
+        Parent fxmlBloquear = new FXMLLoader().load(getClass().getResource("view/bloquearUser-view.fxml"));
+        Parent fxmlGerenAcervo = new FXMLLoader().load(getClass().getResource("view/gerenAcervo-view.fxml"));
+        Parent fxmlDeletarLivro = new FXMLLoader().load(getClass().getResource("view/deletarLivro-view.fxml"));
+        Parent fxmlAttLivro = new FXMLLoader().load(getClass().getResource("view/atualizarLivro-view.fxml"));
+        Parent fxmlCadastroAdm = new FXMLLoader().load(getClass().getResource("view/registroOperadores-view.fxml"));
 
         sceneHello = new Scene(fxmlHello,640,480);
         sceneLogin = new Scene(fxmlLogin,640,480);
@@ -66,6 +76,11 @@ public class HelloApplication extends Application {
         sceneRelatorio = new Scene(fxmlRelatorio,640,480);
         sceneGerenUsu = new Scene(fxmlGerenUsu,640,480);
         sceneHistoricoUsu = new Scene(fxmlHistoricoUsu,640,480);
+        sceneBloquear = new Scene(fxmlBloquear,640,480);
+        sceneGerenAcervo = new Scene(fxmlGerenAcervo,640,480);
+        sceneDeletarLivro = new Scene(fxmlDeletarLivro,640,480);
+        sceneAttLivro = new Scene(fxmlAttLivro,640,480);
+        sceneCadastroAdm = new Scene(fxmlCadastroAdm,640,480);
 
         stage.setScene(sceneHello);
 
@@ -121,10 +136,25 @@ public class HelloApplication extends Application {
             case "historicouser":
                 stage.setScene(sceneHistoricoUsu);
                 break;
+            case "bloquear":
+                stage.setScene(sceneBloquear);
+                break;
+            case "gerenacervo":
+                stage.setScene(sceneGerenAcervo);
+                break;
+            case "deletarlivro":
+                stage.setScene(sceneDeletarLivro);
+                break;
+            case "atualizarlivro":
+                stage.setScene(sceneAttLivro);
+                break;
+            case "registroadm":
+                stage.setScene(sceneCadastroAdm);
+                break;
+
 
         }
     }
-
 
 
 
