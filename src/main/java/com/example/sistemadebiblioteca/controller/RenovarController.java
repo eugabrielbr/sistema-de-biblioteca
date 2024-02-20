@@ -57,7 +57,7 @@ public class RenovarController {
 
             Emprestimo value = lista.get(i);
 
-            this.emprestimosAtivos[i] = value.getLivro().getTitulo() + " - ID: " + value.getLivro().getID();
+            this.emprestimosAtivos[i] = value.getLivro().getTitulo() + " - Data de devolução atual: " + value.getDataDevolucao() + " - ID livro: " + value.getLivro().getID();
 
         }
 
@@ -92,7 +92,7 @@ public class RenovarController {
         try{
             Emprestimo emprestimo = lista.get(index);
             usuarioUseCases.renovarLivros(emprestimo.getLivro().getID(),LoginController.usuario.getID(),LocalDateNow.localDateNow,DAO.getLivroDAO(),DAO.getUsuarioDAO(),DAO.getEmprestimoDAO());
-            alertText.setText("Renovação Bem-sucedida! A nova data de devolução é: " + DAO.getEmprestimoDAO().findByIDlivroIDusuario(LoginController.usuario.getID(),emprestimo.getLivro().getID()).getDataDevolucao() );
+            alertText.setText("Renovação Bem-sucedida! A nova data de devolução é: " + DAO.getEmprestimoDAO().findByIDlivroIDusuario(emprestimo.getLivro().getID(),LoginController.usuario.getID()).getDataDevolucao());
             alertText.setStyle("-fx-text-fill: #69B00B;");
         }
         catch (UsuarioUseCasesExceptions e){

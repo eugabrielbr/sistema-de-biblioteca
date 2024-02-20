@@ -110,10 +110,12 @@ public class BlibUseCases {
                         //System.out.println("if 4");
                         daoEmprestimo.create(emprestimo); //registro emprestimo
 
+
                         resultLivro.setDisponibilidade(false); //atualizo disponibilidade do livro
                         resultLivro.removerFila();//remover da fila, pois ele ja pegou
                         resultLivro.setarMaisUm(); //setando a quantidade de vezes que o livro foi pego emprestado
                         daoLivro.update(resultLivro, resultLivro.getID()); //jogo no acervo
+
                         Usuario user = daoUsuario.findById(emprestimo.getUsuario().getID());
 
                         user.registroHistoricoUser(emprestimo);//registrar emprestimo no historico do usuario

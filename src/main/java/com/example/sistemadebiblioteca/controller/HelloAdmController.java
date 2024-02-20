@@ -41,12 +41,12 @@ public class HelloAdmController {
 
     @FXML
     void gerenAcervoAction(ActionEvent event) {
-
+        HelloApplication.changeScene("gerenacervo");
     }
 
     @FXML
     void gerenOperadores(ActionEvent event) {
-
+        HelloApplication.changeScene("registroadm");
     }
 
     @FXML
@@ -61,6 +61,10 @@ public class HelloAdmController {
 
     @FXML
     void sairAction(ActionEvent event) {
+
+        HelloController.isAdm = false;
+        HelloController.isLei = false;
+        HelloController.isBib = false;
         HelloApplication.changeScene("hello");
     }
 

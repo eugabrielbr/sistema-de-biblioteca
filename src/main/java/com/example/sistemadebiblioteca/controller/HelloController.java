@@ -38,10 +38,11 @@ public class HelloController {
 
 
     @FXML
-    void botaoAdmAction(ActionEvent event) throws IOException, ClassNotFoundException {
+    void botaoAdmAction(ActionEvent event) throws IOException, ClassNotFoundException, DAOExceptions {
 
         isAdm = true;
-        HelloApplication.changeScene("administrador");
+
+        HelloApplication.changeScene("login");
 
     }
 

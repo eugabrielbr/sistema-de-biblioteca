@@ -109,7 +109,7 @@
                   <Insets right="550.0" />
                </VBox.margin>
             </Button>
-            <Label fx:id="erroRegistro" textFill="RED">
+            <Label fx:id="erroRegistro" textFill="RED" translateY="-10.0">
                <VBox.margin>
                   <Insets bottom="40.0" top="-10.0" />
                </VBox.margin>

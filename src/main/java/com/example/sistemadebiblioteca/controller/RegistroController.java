@@ -73,10 +73,12 @@ public class RegistroController {
                 Usuario usuario = new Usuario(name, endereco, telefone, senha);
                 try {
                     Integer id = DAO.getUsuarioDAO().create(usuario);
+                    erroRegistro.setStyle("-fx-text-fill: #69B00B;");
                     erroRegistro.setText("Registro efetuado! LOGIN DE ACESSO: " + id);
                     clear();
 
                 } catch (Exception e) {
+                    erroRegistro.setStyle("-fx-text-fill: #AE0001;");
                     erroRegistro.setText("Erro ao cadastrar. Tente novamente!");
                     System.out.println(e);
                 }
@@ -112,7 +114,7 @@ public class RegistroController {
         alertText.setText("");
         erroRegistro.setText("");
 
-        //mudar cena
+        HelloApplication.changeScene("gerenusu");
     }
 
     @FXML

@@ -59,7 +59,7 @@ public class RelatorioController {
 
         if (lPopulares != null){
 
-            if (lPopulares.size() == 5){
+            if (lPopulares.size() >= 5){
                 this.livrosPopulares.setText("Top 5 livros mais populares:\n" +
                         "     - " + lPopulares.get(0).getTitulo() + " (" + lPopulares.get(0).getQtdEmprestimo() + " empréstimos)\n" +
                         "     - "  + lPopulares.get(1).getTitulo() + " (" + lPopulares.get(1).getQtdEmprestimo() + " empréstimos)\n" +

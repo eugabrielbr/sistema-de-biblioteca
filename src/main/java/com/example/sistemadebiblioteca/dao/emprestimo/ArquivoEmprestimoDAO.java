@@ -191,6 +191,8 @@ public class ArquivoEmprestimoDAO implements EmprestimoDAO{
                 return emprestimo;
             }
 
+
+
         }
         if (emprestimo == null){
 

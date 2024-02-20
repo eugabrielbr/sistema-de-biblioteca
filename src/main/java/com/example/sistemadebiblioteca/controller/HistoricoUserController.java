@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.example.sistemadebiblioteca.HelloApplication;
 import com.example.sistemadebiblioteca.dao.DAO;
+import com.example.sistemadebiblioteca.HistoricoUser;
 import com.example.sistemadebiblioteca.exceptions.dao.DAOExceptions;
 import com.example.sistemadebiblioteca.model.Emprestimo;
-import com.example.sistemadebiblioteca.model.Livro;
 import com.example.sistemadebiblioteca.model.Usuario;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -37,68 +37,59 @@ public class HistoricoUserController {
     private TextField pesquisaText;
 
     @FXML
-    private TableView<String> tabela;
+    private TableView<HistoricoUser> tabela;
 
     @FXML
     private Label textAlert;
     @FXML
-    private TableColumn<String, String> titulo;
+    private TableColumn<HistoricoUser, String> titulo;
     @FXML
-    private TableColumn<String, String> dataEmpres;
+    private TableColumn<HistoricoUser, String> dataEmpres;
     @FXML
-    private TableColumn<String, String> dataDevol;
-    private String[] tituloL;
-    private String[] emprestimo;
-    private String[] devolucao;
-    private String[] idL;
+    private TableColumn<HistoricoUser, String> dataDevol;
+    //private String[] tituloL;
+    //private String[] emprestimo;
+    //private String[] devolucao;
+    //private String[] idL;
 
 
     @FXML
-    private TableColumn<String, String> id;
+    private TableColumn<HistoricoUser, String> id;
 
-
+    private ObservableList<HistoricoUser> list;
     private List<Emprestimo> lista;
 
 
 
-    public void convertListforArray(List<Emprestimo> lista){
-
-        this.tituloL = new String[lista.size()];
-        this.emprestimo  = new String[lista.size()];
-        this.devolucao = new String[lista.size()];
-        this.idL = new String[lista.size()];
+    public Integer convertListforArray(List<Emprestimo> lista){
 
         for (int i = 0; i < lista.size(); i++){
 
-            Emprestimo value = lista.get(i);
-
-
-            this.tituloL[i] = value.getLivro().getTitulo();
-            this.emprestimo[i] = String.valueOf(value.getDataEmprestimo());
-            this.devolucao[i] = String.valueOf(value.getDataDevolucao());
-            this.idL[i] = String.valueOf(value.getIDemprestimo());
+            this.list.add(new HistoricoUser(lista.get(i).getLivro().getTitulo(),String.valueOf(lista.get(i).getDataEmprestimo()),String.valueOf(lista.get(i).getDataDevolucao()),String.valueOf(lista.get(i).getIDemprestimo())));
 
         }
 
-        ObservableList<String> listaTitulos = FXCollections.observableArrayList(tituloL);
-        ObservableList<String> listaEmprestimos = FXCollections.observableArrayList(emprestimo);
-        ObservableList<String> listaDevolucao = FXCollections.observableArrayList(devolucao);
-        ObservableList<String> listaID = FXCollections.observableArrayList(idL);
 
-        for (int i = 0; i < listaTitulos.size() && i < listaEmprestimos.size() && i <  listaDevolucao.size() && i <  listaID.size(); i++){
-            ObservableList<String> item = FXCollections.observableArrayList(listaTitulos.get(i), listaEmprestimos.get(i),listaDevolucao.get(i),listaID.get(i));
-            tabela.getItems().add(item.toString());
-        }
+        titulo.setCellValueFactory(new PropertyValueFactory<HistoricoUser,String>("titulo"));
+        dataEmpres.setCellValueFactory(new PropertyValueFactory<HistoricoUser,String>("dataEmprestimo"));
+        dataDevol.setCellValueFactory(new PropertyValueFactory<HistoricoUser,String>("dataDevolucao"));
+        id.setCellValueFactory(new PropertyValueFactory<HistoricoUser,String>("id"));
+        tabela.setItems(list);
 
-
+        return lista.size();
     }
     @FXML
     void botaoBuscarAction(ActionEvent event) throws IOException, ClassNotFoundException, DAOExceptions {
 
+        tabela.getItems().clear();
+
         try {
+            tabela.refresh();
             Usuario user = DAO.getUsuarioDAO().findById(Integer.parseInt(pesquisaText.getText()));
             List<Emprestimo> listaHistorico = user.getHistorico();
+
             convertListforArray(listaHistorico);
+            pesquisaText.clear();
 
         }catch (Exception e){
             System.out.println(e);
@@ -109,7 +100,9 @@ public class HistoricoUserController {
 
     @FXML
     void botaoVoltarAction(ActionEvent event) {
-
+        pesquisaText.clear();
+        tabela.getItems().clear();
+        HelloApplication.changeScene("gerenusu");
     }
 
     @FXML
@@ -129,6 +122,8 @@ public class HistoricoUserController {
         assert textAlert != null : "fx:id=\"textAlert\" was not injected: check your FXML file 'historicoUser-view.fxml'.";
         assert titulo != null : "fx:id=\"titulo\" was not injected: check your FXML file 'historicoUser-view.fxml'.";
         this.lista = new ArrayList<>();
+        this.list = FXCollections.observableArrayList();
+
         
     }
 

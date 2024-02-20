@@ -61,7 +61,7 @@ public class RegistrarLivroController {
                 Integer i;
 
                 for (i = 0; i < Integer.parseInt(qtd.getText()); i++) {
-                    System.out.println(i);
+
                     Livro livro = new Livro(titulo.getText(),autor.getText(),editora.getText(),Integer.parseInt(isbn.getText()),categoria.getText(),loc.getText());
                     DAO.getLivroDAO().create(livro);
                 }
@@ -97,8 +97,11 @@ public class RegistrarLivroController {
     @FXML
     void voltarAction(ActionEvent event) {
 
+        clear();
+        alertText.setText("");
+
         if(HelloController.isAdm){
-            //muda para cena hello adm
+            HelloApplication.changeScene("gerenacervo");
         }
         else if(HelloController.isBib){
             HelloApplication.changeScene("bibliotecario");

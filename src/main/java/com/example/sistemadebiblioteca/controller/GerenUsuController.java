@@ -35,17 +35,17 @@ public class GerenUsuController {
 
     @FXML
     void bloqUsuAction(ActionEvent event) {
-
+        HelloApplication.changeScene("bloquear");
     }
 
     @FXML
     void regUsuAction(ActionEvent event) {
-
+        HelloApplication.changeScene("registro");
     }
 
     @FXML
     void voltAction(ActionEvent event) {
-
+        HelloApplication.changeScene("administrador");
     }
 
     @FXML

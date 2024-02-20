@@ -36,14 +36,48 @@
             </Label>
          </children>
       </VBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="1">
          <children>
-            <Button fx:id="buscar" mnemonicParsing="false" onAction="#buscarAction" text="Buscar livro" />
-            <Button fx:id="gerenAcervo" mnemonicParsing="false" onAction="#gerenAcervoAction" text="Gerenciamento acervo" />
-            <Button fx:id="gerenOperadores" mnemonicParsing="false" onAction="#gerenOperadores" text="Gerenciamento operadores" />
-            <Button fx:id="relatorio" mnemonicParsing="false" onAction="#relatorioAction" text="Relatório geral" />
-            <Button fx:id="sair" mnemonicParsing="false" onAction="#sairAction" text="Sair" />
-            <Button fx:id="gerenUsuario" mnemonicParsing="false" onAction="#gerenUsuarioAction" text="Gerenciamento de usuários" />
+            <Button fx:id="buscar" minHeight="60.0" mnemonicParsing="false" onAction="#buscarAction" prefWidth="100.0" text="Buscar livro" translateX="20.0" translateY="100.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font></Button>
+            <Button fx:id="gerenAcervo" minHeight="60.0" mnemonicParsing="false" onAction="#gerenAcervoAction" prefWidth="100.0" text="Geren. acervo" translateX="30.0" translateY="100.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font></Button>
+            <Button fx:id="gerenOperadores" minHeight="60.0" mnemonicParsing="false" onAction="#gerenOperadores" prefWidth="100.0" text="Registrar usuário" translateX="40.0" translateY="100.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font></Button>
+            <Button fx:id="relatorio" minHeight="60.0" mnemonicParsing="false" onAction="#relatorioAction" prefWidth="100.0" text="Relatório geral" translateX="50.0" translateY="100.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font></Button>
+            <Button fx:id="gerenUsuario" minHeight="60.0" mnemonicParsing="false" onAction="#gerenUsuarioAction" prefWidth="100.0" text="Geren. usuário" translateX="60.0" translateY="100.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font></Button>
+            <Button fx:id="sair" mnemonicParsing="false" onAction="#sairAction" text="Sair" translateX="-570.0" translateY="270.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
    </children>

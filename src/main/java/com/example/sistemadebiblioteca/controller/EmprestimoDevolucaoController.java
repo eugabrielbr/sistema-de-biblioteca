@@ -86,6 +86,8 @@ public class EmprestimoDevolucaoController {
     void botaoEmprestarAction(ActionEvent event) throws IOException, ClassNotFoundException, DAOExceptions, BlibUseCaseExceptions {
 
         alertText.setText("");
+
+
         try {
 
             Usuario user = DAO.getUsuarioDAO().findById(Integer.parseInt(IDusuario.getText()));
@@ -94,11 +96,13 @@ public class EmprestimoDevolucaoController {
 
             blibUseCases.registroEmprestimo(emprestimo,DAO.getLivroDAO(),DAO.getUsuarioDAO(),DAO.getEmprestimoDAO(),LocalDateNow.localDateNow);
             alertText.setStyle("-fx-text-fill: #69B00B;");
-            alertText.setText("Empréstimo registrado! A data de devolução é " + DAO.getEmprestimoDAO().findByIDlivroIDusuario(user.getID(), livro.getID()).getDataDevolucao());
+            alertText.setText("Empréstimo registrado! A data de devolução é " + DAO.getEmprestimoDAO().findByIDlivroIDusuario(livro.getID(),user.getID()).getDataDevolucao());
+
         }
         catch (DAOExceptions e){
             alertText.setStyle("-fx-text-fill: #AE0001;");
             alertText.setText("Empréstimo mal-sucedido! Verifique se as informações estão corretas");
+
         }
         catch (BlibUseCaseExceptions b){
             alertText.setStyle("-fx-text-fill: #AE0001;");
@@ -107,6 +111,8 @@ public class EmprestimoDevolucaoController {
         catch (Exception z){
             alertText.setText("Não foi possível efetuar o empréstimo"+ z.getMessage());
         }
+
+
 
     }
 

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="com.example.sistemadebiblioteca.controller.GerenUsuController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sistemadebiblioteca.controller.GerenUsuController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -19,15 +19,24 @@
     <RowConstraints maxHeight="374.0" minHeight="10.0" prefHeight="364.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="1">
          <children>
-            <Button fx:id="regUsu" mnemonicParsing="false" onAction="#regUsuAction" text="Registrar usuário" />
-            <Button fx:id="bloq" mnemonicParsing="false" onAction="#bloqUsuAction" text="Bloquear usuário" />
-            <Button fx:id="HistUsu" mnemonicParsing="false" onAction="#HistUsuAction" text="Histórico usuário" />
-            <Button fx:id="voltar" mnemonicParsing="false" onAction="#voltAction" text="Voltar" />
+            <Button fx:id="regUsu" minHeight="60.0" mnemonicParsing="false" onAction="#regUsuAction" prefWidth="100.0" text="Registrar" translateX="120.0" translateY="130.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="bloq" minHeight="60.0" mnemonicParsing="false" onAction="#bloqUsuAction" prefWidth="140.0" text="Bloquear/Desbloquear" translateX="140.0" translateY="130.0">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font></Button>
+            <Button fx:id="HistUsu" minHeight="60.0" mnemonicParsing="false" onAction="#HistUsuAction" prefWidth="100.0" text="Histórico" translateX="160.0" translateY="130.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="voltar" mnemonicParsing="false" onAction="#voltAction" text="Voltar" translateX="-375.0" translateY="330.0" />
          </children>
       </HBox>
-      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #a8ed89;">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #a8ed89;">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" text="Gerenciamento" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                <font>
