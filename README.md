@@ -11,6 +11,8 @@
 - Padrão de Projeto Singleton
 - Diagrama de Classes
 - Arquivos em Java
+- Java FX e interface gráfica
+- Padrão MVC
 
 ### Diagrama de Classes
 
@@ -33,12 +35,12 @@
 10. **Controle de operadores do sistema:** O sistema deve permitir o cadastro de novos operadores, com informações como nome, número de identificação, cargo e senha de acesso. Os cargos podem ser do tipo Administrador ou Bibliotecário. O Bibliotecário só terá acesso às funcionalidades #1, #2 e #3.
 
 ### Estrutura de diretórios para desenvolvimento
-- [model](src/main/model): modelos de dados do sistema
-- [dao](src/main/dao): implementação do padrão DAO (Data Access Object)
+- [model](src/main/java/com/example/sistemadebiblioteca/model): modelos de dados do sistema
+- [dao](src/main/java/com/example/sistemadebiblioteca/dao): implementação do padrão DAO (Data Access Object)
 - [testes](src/test): testes da fase 1
-- [exceções](src/main/exceptions): exceções da fase 1
-- *controller (em breve...):*
-- *view (em breve...):*
+- [exceções](src/main/java/com/example/sistemadebiblioteca/exceptions): exceções
+- [controller](src/main/java/com/example/sistemadebiblioteca/controller): controllers da interface gráfica
+- [view](src/main/resources/com/example/sistemadebiblioteca/view): views da interface gráfica
 ## Desenvolvimento
 
 ### Instalação
@@ -49,7 +51,7 @@ Faça o download do repositório
 git clone https://github.com/eugabrielbr/sistema-de-biblioteca.git
 ```
 
-E abra o projeto no IntelliJ IDEA e aguarde o download das dependências.
+E abra o projeto no IntelliJ IDEA e aguarde o download das dependências. Para rodar a interface, execulte a classe HelloApplication.
 
 ## Executando os testes de unidade 
 
@@ -58,4 +60,5 @@ Para rodar os testes de unidade, baixe o repositório e abra pela IDE Intellij. 
 ## Ferramentas
 
 * [IntelliJ IDEA Community](https://www.jetbrains.com/idea/download/) - IDE utilizado para codificação
+* [Scene Builder]([https://www.jetbrains.com/idea/download/](https://gluonhq.com/products/scene-builder/)https://gluonhq.com/products/scene-builder/) - Programa utilizado para a contrução de telas
 
