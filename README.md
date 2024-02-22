@@ -60,5 +60,5 @@ Para rodar os testes de unidade, baixe o repositório e abra pela IDE Intellij. 
 ## Ferramentas
 
 * [IntelliJ IDEA Community](https://www.jetbrains.com/idea/download/) - IDE utilizado para codificação
-* [Scene Builder]([https://www.jetbrains.com/idea/download/](https://gluonhq.com/products/scene-builder/)https://gluonhq.com/products/scene-builder/) - Programa utilizado para a contrução de telas
+* [Scene Builder](https://gluonhq.com/products/scene-builder/) - Programa utilizado para a contrução de telas
 
